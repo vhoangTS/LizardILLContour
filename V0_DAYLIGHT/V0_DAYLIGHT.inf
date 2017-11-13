@@ -1,0 +1,753 @@
+*********************************************************************************
+*  TRNBuild   3.0.285
+*********************************************************************************
+*   BUILDING DESCRIPTIONS FILE TRNSYS
+*   FOR BUILDING:   S:\VuHoang\__TRNLizard_is_Life\_TRNLizard_Support\_LECTURES\TSA_2017_2018\Example_test\Model\V0_DAYLIGHT\V0_DAYLIGHT.inf
+*   GET BY WORKING WITH TRNBuild 1.0 for Windows
+*********************************************************************************
+*
+*--------------------------------------------------------------------------------
+*  C o m m e n t s
+*--------------------------------------------------------------------------------
+*#C Originally created by TRNSIDF Version 1.45
+*--------------------------------------------------------------------------------
+*  P r o j e c t
+*--------------------------------------------------------------------------------
+*+++ PROJECT
+*+++ TITLE=undefined
+*+++ DESCRIPTION=undefined
+*+++ CREATED=vhoang
+*+++ ADDRESS=undefined
+*+++ CITY=undefined
+*+++ SWITCH=undefined
+*--------------------------------------------------------------------------------
+*  P r o p e r t i e s
+*--------------------------------------------------------------------------------
+PROPERTIES
+ DENSITY=1.204 : CAPACITY=1.012 : PRESSURE=101325.000 : HVAPOR=2454.0 : SIGMA=2.041e-007 : RTEMP=293.15
+*--- convective heat transfer coefficient calculation ---------------------
+ KFLOORUP=7.2 : EFLOORUP=0.31 : KFLOORDOWN=3.888 : EFLOORDOWN=0.31
+ KCEILUP=7.2 : ECEILUP=0.31 : KCEILDOWN=3.888 : ECEILDOWN=0.31
+ KVERTICAL=5.76 : EVERTICAL=0.3
+*--- radiance parameters -------------------
+ SCENE_ROTATION_ANGLE=0 : GROUND_IDS= : GROUND_REFLECTANCE=0.2 : SHADER_REFLECTANCE=0
+ CALC_MODE=CLASSIC : LATITUDE=48.7716 : LONGITUDE=-9.17632 : TIME_ZONE=-15 : SITE_ELEVATION=253
+ AB=6 : AD=768 : AS=384 : AR=192 : AA=0.1
+ LR=6 : ST=0.15 : SJ=1 : LW=0.004 : DJ=0 : DS=0.2 : DR=2 : DP=512
+*--- comfort parameters -------------------
+ DIAM-SENSOR=0.07 : EPS-SENSOR=0.82 : REFL-SENSOR=0.47 : ELV_AIRSPEED1=0 : ELV_AIRSPEED2=0 : ELV_AIRSPEED3=0
+*--- other -------------------
+ FSCAL_TREGENZA=MEDIUM : SHM_MODE=0 : SURFGRID=0.2
+*--- daylight  -------------------
+ UDIMIN=100 : UDIMAX=2000 : DAMIN=300
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+TYPES
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  L a y e r s
+*--------------------------------------------------------------------------------
+LAYER AIR_SUS
+ RESISTANCE=     0.17 : PERT=      0 : PENRT=      0
+LAYER WOOD
+ CONDUCTIVITY=  0.468 : CAPACITY=    2.1 : DENSITY=    600 : PERT=      0 : PENRT=      0
+LAYER CONCRETE
+ CONDUCTIVITY=   7.56 : CAPACITY=      1 : DENSITY=   2200 : PERT=      0 : PENRT=      0
+LAYER INSULATION
+ CONDUCTIVITY=  0.126 : CAPACITY=   1.25 : DENSITY=     25 : PERT=      0 : PENRT=      0
+LAYER SUBSONIC
+ CONDUCTIVITY=  0.162 : CAPACITY=      1 : DENSITY=     60 : PERT=      0 : PENRT=      0
+LAYER GYPSUM
+ CONDUCTIVITY=   0.75 : CAPACITY=      1 : DENSITY=    900 : PERT=      0 : PENRT=      0
+LAYER PLASTER
+ CONDUCTIVITY=   2.52 : CAPACITY=      1 : DENSITY=   1400 : PERT=      0 : PENRT=      0
+*--------------------------------------------------------------------------------
+*  I n p u t s
+*--------------------------------------------------------------------------------
+INPUTS HT_BUI_OFFICE Q_PERS_KJ_OFFICE Q_LIGHT_KJ_OFFICE TAIR_OFFICE Q_COMP_KJ_OFFICE ACR_INF_OFFICE TAIR_SET_HT_OFFICE
+INPUTS_DESCRIPTION
+ HT_BUI_OFFICE : any : Input
+ Q_PERS_KJ_OFFICE : any : Input
+ Q_LIGHT_KJ_OFFICE : any : Input
+ TAIR_OFFICE : any : Input
+ Q_COMP_KJ_OFFICE : any : Input
+ ACR_INF_OFFICE : any : Input
+ TAIR_SET_HT_OFFICE : any : Input
+*--------------------------------------------------------------------------------
+*  S c h e d u l e s
+*--------------------------------------------------------------------------------
+SCHEDULE WORK_WD
+ HOURS =0.000 1.000 2.000 3.000 4.000 5.000 6.000 7.000 8.000 9.000 10.000 11.000 12.000 13.000 14.000 15.000 16.000 17.000 18.000 19.000 20.000 21.000 22.000 23.000 24.0
+ VALUES=0 0 0 0 0 0 0 0 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 0 0 0 0 0 0 0 
+SCHEDULE WORK_WE
+ HOURS =0.000 1.000 2.000 3.000 4.000 5.000 6.000 7.000 8.000 9.000 10.000 11.000 12.000 13.000 14.000 15.000 16.000 17.000 18.000 19.000 20.000 21.000 22.000 23.000 24.0
+ VALUES=0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+SCHEDULE WORK
+ DAYS=1 2 3 4 5 6 7
+ HOURLY=WORK_WD WORK_WD WORK_WD WORK_WD WORK_WD WORK_WE WORK_WE
+*--------------------------------------------------------------------------------
+*  C O N S T R U C T I O N (Wall, Floor, Ceiling,..)
+*--------------------------------------------------------------------------------
+CONSTRUCTION EXTW_LIGHT
+ LAYERS   = GYPSUM INSULATION PLASTER 
+ THICKNESS= 0.012  0.15       0.015   
+ ABS-FRONT= 0.6   : ABS-BACK= 0.6  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 11 : HBACK= 64
+CONSTRUCTION INTW_LIGHT
+ LAYERS   = GYPSUM INSULATION GYPSUM 
+ THICKNESS= 0.0125 0.15       0.0125 
+ ABS-FRONT= 0.6   : ABS-BACK= 0.6  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 11 : HBACK= 29
+CONSTRUCTION INTF_LIGHT
+ LAYERS   = WOOD  SUBSONIC CONCRETE AIR_SUS GYPSUM 
+ THICKNESS= 0.015 0.05     0.15     0       0.0125 
+ ABS-FRONT= 0.7   : ABS-BACK= 0.3  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 11 : HBACK= 29
+CONSTRUCTION INTCL_LIGHT
+ LAYERS   = GYPSUM AIR_SUS CONCRETE SUBSONIC WOOD  
+ THICKNESS= 0.0125 0       0.15     0.05     0.015 
+ ABS-FRONT= 0.3   : ABS-BACK= 0.7  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = 11 : HBACK= 29
+*--------------------------------------------------------------------------------
+*  W i n d o w s
+*--------------------------------------------------------------------------------
+WINDOW WIN_W1_7200_S_0_90
+ WINID=7200 : HINSIDE=11 : HOUTSIDE=64 : SLOPE=90 : SPACID=4 : WWID=1.4 : WHEIG=1.8 : FFRAME=0.3 : UFRAME=7.25 : ABSFRAME=0.6 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.5 : CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0.9 : ITSHADECLOSE=648 : ITSHADEOPEN=540 : FLOWTOAIRNODE=1 : PERT=0 : PENRT=0 : RADMATERIAL=glass_70 : RADMATERIAL_SHD1=glass_20
+*--------------------------------------------------------------------------------
+*  G a i n s / L o s s e s
+*--------------------------------------------------------------------------------
+GAIN PEOPLE_OFFICE
+ CONVECTIVE=INPUT 0.5*Q_PERS_KJ_OFFICE : RADIATIVE=INPUT 0.5*Q_PERS_KJ_OFFICE : HUMIDITY=0.0122 : ELPOWERFRAC=0 :  AREA_RELATED : CATEGORY=PEOPLE
+GAIN EQUIP_OFFICE
+ CONVECTIVE=INPUT 0.8*Q_COMP_KJ_OFFICE : RADIATIVE=INPUT 0.2*Q_COMP_KJ_OFFICE : HUMIDITY=0 : ELPOWERFRAC=1 :  AREA_RELATED : CATEGORY=EQUIPMENT
+GAIN LIGHT_OFFICE
+ CONVECTIVE=INPUT 0.4*Q_LIGHT_KJ_OFFICE : RADIATIVE=INPUT 0.6*Q_LIGHT_KJ_OFFICE : HUMIDITY=0 : ELPOWERFRAC=1 :  AREA_RELATED : CATEGORY=LIGHTS
+*--------------------------------------------------------------------------------
+*  C o m f o r t
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  I n f i l t r a t i o n
+*--------------------------------------------------------------------------------
+INFILTRATION INF_OFFICE
+ AIRCHANGE=INPUT 1*ACR_INF_OFFICE
+*--------------------------------------------------------------------------------
+*  V e n t i l a t i o n
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  C o o l i n g
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  H e a t i n g
+*--------------------------------------------------------------------------------
+HEATING HEAT_OFFICE
+ ON=INPUT 1*TAIR_SET_HT_OFFICE
+ POWER=INPUT 1*HT_BUI_OFFICE
+ HUMIDITY=0
+ RRAD=0
+ ELPOWERFRAC=0
+ AREA_RELATED_POWER=0
+*--------------------------------------------------------------------------------
+*  D a y l i g h t   C o n t r o l 
+*--------------------------------------------------------------------------------
+*
+*--------------------------------------------------------------------------------
+*  Z o n e s
+*--------------------------------------------------------------------------------
+ZONES OFFICE
+*--------------------------------------------------------------------------------
+*  O r i e n t a t i o n s
+*--------------------------------------------------------------------------------
+HEMISPHERE NORTHERN
+ORIENTATIONS H_0_0 H_0_180 S_0_90 W_90_90 N_180_90 E_270_90
+INTERNAL_CALCULATION H_0_0 H_0_180 S_0_90 W_90_90 N_180_90 E_270_90
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+BUILDING
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  Z o n e  OFFICE  /  A i r n o d e  OFFICE
+*--------------------------------------------------------------------------------
+ZONE OFFICE
+RADIATIONMODE
+ BEAM=STANDARD : DIFFUSE=STANDARD : LONGWAVE=STANDARD : GEOMODE=3D_DATA : FSOLAIR=0
+DAYLIGHTMODE
+ DLSHADE =-1
+AIRNODE OFFICE
+CEILING      =INTCL_LIGHT : SURF=  1 : AREA=        18 : BOUNDARY=INPUT 1*TAIR_OFFICE : GEOSURF=0.112
+FLOOR        =INTF_LIGHT : SURF=  2 : AREA=        18 : BOUNDARY=INPUT 1*TAIR_OFFICE : GEOSURF=0.6
+WALL         =INTW_LIGHT : SURF=  3 : AREA=      10.8 : BOUNDARY=INPUT 1*TAIR_OFFICE : GEOSURF=0.067
+WALL         =INTW_LIGHT : SURF=  4 : AREA=        15 : BOUNDARY=INPUT 1*TAIR_OFFICE : GEOSURF=0.093
+WALL         =INTW_LIGHT : SURF=  5 : AREA=        15 : BOUNDARY=INPUT 1*TAIR_OFFICE : GEOSURF=0.093
+WALL         =EXTW_LIGHT : SURF=  6 : AREA=       5.4 : EXTERNAL : ORI=S_0_90 : FSKY=0.5 : GEOSURF=0.034
+WINDOW=WIN_W1_7200_S_0_90 : SURF=  7 : AREA=       5.4 : EXTERNAL : ORI=S_0_90 : FSKY=0.5
+ REGIME
+ GAIN        = PEOPLE_OFFICE : SCALE= SCHEDULE 1*WORK : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= 1
+ GAIN        = EQUIP_OFFICE : SCALE= SCHEDULE 1*WORK : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= 1
+ GAIN        = LIGHT_OFFICE : SCALE= SCHEDULE 1*WORK : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= 1
+ INFILTRATION= INF_OFFICE
+ HEATING     = HEAT_OFFICE
+ CAPACITANCE = 162     : VOLUME= 54      : REFAREA= 18      : TINITIAL= 20      : PHINITIAL= 50      : WCAPR= 3
+*--------------------------------------------------------------------------------
+*  O u t p u t s
+*--------------------------------------------------------------------------------
+OUTPUTS
+ TRANSFER : TIMEBASE=1.000
+ AIRNODES = OFFICE 
+ NTYPES =   1 : TAIR - air temperature of airnode
+        =   2 : QSENS - sensible energy demand of airnode, heating(-), cooling(+)
+        =   3 : QCSURF - total convection to air from all surfaces within airnode (incl. internal shading)
+        =   4 : QINF - sensible infiltration energy gain of airnode
+        =   5 : QVENT - sensible ventilation energy gain of airnode
+        =   7 : QGCONV - internal convective gains of airnode
+        =   9 : RELHUM - relativ humidity of airnode air
+        =  29 : ABSHUM - absolute humidity of airnode air
+        =  10 : QLATD - latent energy demand of airnode, humidification(-), dehumidifcation (+)
+        =  12 : QSOLTR - total shortwave solar radiation transmitted through external windows of airnode (but not kept 100 % in airnode)
+        =  13 : QGRAD - defined internal radiative gain of airnode (Rad, gains are distributed over zones!)
+        =  25 : TOP - obsolete use new comfort outputs (Version 16: Operative temperature)
+        = 151 : QGLIGHT - Sensible energy gains from "lights" gains of airnode [kJ/hr]
+        = 152 : QGEQUIP - Sensible energy gains from  "equipment" gains of airnode [kJ/hr]
+        = 153 : QGMISC - Sensible energy gains from  "miscellaneous" gains of airnode [kJ/hr]
+        = 154 : QGPEOPLE - Sensible energy gains from "people" gains of airnode [kJ/hr]
+        = 155 : QELLIGHT - Electric energy demand of "lights" gains of airnode [kJ/hr]
+        = 156 : QELEQUIP - Electric energy demand of "equipment" gains of airnode [kJ/hr]
+        = 157 : QELMISC - Electric energy demand of "miscellaneous" gains of airnode [kJ/hr]
+        = 159 : QELHEAT - Electric energy demand of heating of airnode [kJ/hr]
+        = 160 : QELCOOL - Electric energy demand of cooling of airnode [kJ/hr]
+        = 161 : QELVENT - Electric energy demand of ventilation of airnode [kJ/hr]
+        = 164 : QGTHB - Sensible energy gain from "thermal bridge" gains/losses of airnode [kJ/hr]
+        = 405 : AREADLC1 - Floor area related to 1st daylight controlled gain [m²]
+        = 406 : ILLUMDLC1 - Daylight illuminance of 1st daylight controlled gain [lux]
+        = 407 : ILLSETDLC1 - Illuminance set point of 1st daylight controlled gain [lux]
+        = 408 : MODEDLC1 - Lighting control type of 1st daylight controlled gain (1...always on, 2...on/off, 3...continuous, 4...continuous on/off)
+        = 409 : FDIMDLC1 - dimming fraction of 1st daylight controlled gain [-]
+        = 410 : CDADLC1 - Continuous daylight autonomy  of 1st daylight controlled gain [-]
+        = 411 : DADLC1 - Daylight autonomy of 1st daylight controlled gain [-]
+        = 412 : UDIDLC1 - Useful daylight illuminance of 1st daylight controlled gain [-]
+        = 400 : ILLUM_H - Global horizontal illuminance outside the building (without shading effects) [lux]
+        = 170 : QAHU_H - total heating energy to condition supply air to set point conditions (sum of defined ventilations with supply air conditioning) [kJ/h]
+        = 171 : QAHU_C - total cooling energy to condition supply air to set point conditions (sum of defined ventilations with supply air conditioning) [kJ/h]
+        = 172 : QAHU_SENS_H - heating energy to condition supply air to reach set point temperature after HX, Dehum (sum of defined ventilations with supply air conditioning) [kJ/h]
+        = 173 : QAHU_SENS_C - cooling energy to condition supply air to reach set point temperature after HX (sum of defined ventilations with supply air conditioning) [kJ/h]
+        = 174 : QAHU_HRSENS_H - heating energy provided by heat recovery unit (sum of defined ventilations with supply air conditioning) [kJ/h]
+        = 175 : QAHU_HRSENS_C - cooling energy provided by heat recovery unit (sum of defined ventilations with supply air conditioning) [kJ/h]
+        = 176 : QAHU_HUM_H - heating energy for humidification process (sum of defined ventilations with supply air conditioning) [kJ/h]
+        = 177 : QAHU_DEHUM_C - cooling energy for dehumidification process (sum of defined ventilations with supply air conditioning) [kJ/h]
+        = 178 : QAHU_REHAT_H - heating energy to condition supply air to reach set point temperature after dehumdification process (sum of defined ventilations with supply air conditioning) [kJ/h]
+        = 180 : TAIR_WB - wet bulb temperature of airnode [C]
+        = 181 : TAIR_DP - dew point temperature of airnode [C]
+        = 185 : TAHU_HR - dry bulb temperature after heat recovery of 1st ventilation with supply air conditioning [C]
+        = 188 : RHAHU_HR - rel. humidity of air after heat recovery of 1st ventilation with supply air conditioning [%]
+        = 189 : WAHU_HR - Humidity ratio of air after heat recovery of 1st ventilation with supply air conditioning [kg/kg]
+        = 117 : QSOLAIR - Solar radiation entering all windows of airnode which is immediately transformed in a convective heat flow rate for the internal air     [kJ/hr]
+        =   6 : QCOUP - sensible coupling energy gain of airnode
+ AIRNODES = OFFICE 
+ NTYPES =  28 : SCHEDULE = WORK,  : - - values of all schedules
+ AIRNODES = OFFICE 
+ NTYPES = 435 : SCHEDULE = WORK,  : STDFILE_DL - Daylight standard output file (selected ON/OFF factor is used by output statistics) [-]
+ AIRNODES = OFFICE 
+ NTYPES = 119 : SURF = 7,  : SHADCNTRL - shading control signal ( 0 or 1 ) of radiation depending control (0 or 1, 0 if not used)
+        = 103 : SURF = 7,  : IBSHAD - Total direct radiation on outside of external surface incl. shading effects
+        = 104 : SURF = 7,  : IDSHAD - Total diffuse radiation on outside of external surface incl. shading effects
+        = 113 : SURF = 7,  : AREA - surface area
+ AIRNODES = OFFICE 
+ NTYPES = 114 : SURF = 6,  : IB - Incident direct radiation on outside of external surfaces (no shading effects)    [kJ/hr]
+        = 115 : SURF = 6,  : ID - Incident diffuse radiation on outside of external surfaces (no shading effects)   [kJ/hr]
+        = 116 : SURF = 6,  : IT - Incident total radiation on outside of external surfaces (no shading effects)     [kJ/hr]
+        = 113 : SURF = 6,  : AREA - surface area
+ AIRNODES = OFFICE 
+ NTYPES =  19 : SURF = 7, 3, 4, 5, 6, 2, 1,  : QCOMI - energy from  inside surface incl. conv. to the air and l-wave radiation to other surfaces
+        =  79 : SURF = 7, 3, 4, 5, 6, 2, 1,  : QSIAB - solar (direkt+diffuse) radiation being absorbed at inside surface
+        =  21 : SURF = 7, 3, 4, 5, 6, 2, 1,  : QABSI - total radiation absorbed (and transmitted) at all inside surf. of airnode (inc. solar gains, radiative heat and int. rad. gains, but not l-wave radiation from other walls
+ AIRNODES = OFFICE 
+ NTYPES =  17 : SURF = 7,  : TSI - inside surface temperature
+*
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  T R N S F L O W Multizone Airflow Network (Model COMIS 3.1)
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+MULTIZONE_AIRFLOW_NETWORK
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+CALCFLOWS=0
+*--------------------------------------------------------------------------------
+*  A d d  T R N S F L O W  C o m m a n d s
+*--------------------------------------------------------------------------------
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+POLLUTANTS
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+LINKTYPES
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  C r a c k s
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  F a n s
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  S t r a i g h t   D u c t s
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  F l o w   C o n t r o l l e r s
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  L a r g e    V e r t i c a l   Openings (Windows+Doors)
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  T e s t   D a t a   C o m p o n e n t s
+*--------------------------------------------------------------------------------
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+NODETYPES
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  E x t e r n a l   N o d e s  (CP VALUES)
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  A u x i l i a r y   N o d e s
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  T h e r m a l  Z o n e   N o d e s
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  W i n d   v e  l o c i t y   p r o f i l e
+*--------------------------------------------------------------------------------
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+WIND_VELOPROF
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  A i r l i n k   N e t w o r k
+*--------------------------------------------------------------------------------
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+AIRLINK_NETWORK
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  E n d
+*--------------------------------------------------------------------------------
+END
+
+_EXTENSION_WINPOOL_START_
+BERKELEY LAB WINDOW v7.4.6.0  DOE-2 Data File : Multi Band Calculation : generated with Trnsys18.std
+Unit System : SI
+Name        : DOE-2 WINDOW LIB
+Desc        : IP_iplus_neut_E_#3_Ar90
+Window ID   : 7200
+Tilt        : 90.0
+Glazings    : 2
+Frame       :  3 Wood                  2.270
+Spacer      :  2 Class2                0.068   1.550  -0.143
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1360.3 mm
+Glass Width : 1060.3 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Ar90/Air1 16.0 0.01712  5.410  2.062  6.300  1.711 -0.0060  0.687 -0.0001
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.504 0.507 0.499 0.489 0.475 0.449 0.392 0.284 0.130 0.000 0.418
+Abs1  0.171 0.172 0.174 0.178 0.184 0.191 0.197 0.199 0.184 0.000 0.185
+Abs2  0.094 0.095 0.103 0.108 0.109 0.112 0.121 0.125 0.086 0.000 0.109
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.230 0.226 0.224 0.225 0.231 0.248 0.290 0.391 0.600 1.000 0.279
+Rbsol 0.232 0.226 0.224 0.226 0.237 0.256 0.294 0.382 0.582 0.999 0.280
+Tvis  0.717 0.721 0.711 0.697 0.678 0.641 0.559 0.405 0.186 0.000 0.596
+Rfvis 0.133 0.127 0.126 0.130 0.142 0.169 0.229 0.365 0.620 1.000 0.207
+Rbvis 0.131 0.124 0.121 0.124 0.136 0.160 0.208 0.313 0.540 0.999 0.189
+SHGC  0.620   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A   N/A
+Tvis_daylight:  0.780
+Layer ID#         7199    37003        0        0        0        0
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.837    0.037        0        0        0        0
+Emis B           0.837    0.837        0        0        0        0
+Thickness(mm)      6.0      6.0        0        0        0        0
+Cond(W/m2-K     ) 166.7    166.7        0        0        0        0
+Spectral File  ip_fl_6.ipe 37003_IP_ipl         None         None         None         None
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+0        0.00   0.00  0.00  0.00  1.35 1.35  1.08 1.08  1.10 1.10  1.12 1.12
+0        6.71   0.00  0.00  0.00  1.35 1.35  1.08 1.08  1.10 1.10  1.12 1.12
+783        0.00   0.00  0.00  0.00  1.35 1.35  1.08 1.08  1.10 1.10  1.12 1.12
+783        6.71   0.00  0.00  0.00  1.35 1.35  1.08 1.08  1.10 1.10  1.12 1.12
+*** END OF LIBRARY ***
+************************************************************************************************************
+*WinID   Description                              Design         U-Value g-value T-sol Rf-sol T-vis-daylight
+************************************************************************************************************
+  7200   IP_iplus_neut_E_#3_Ar90                  6/16/6           1.1  0.62  0.504  0.23  0.78
+_EXTENSION_WINPOOL_END_
+
+_EXTENSION_BuildingGeometry_START_
+vertex 1 0.000000000000 0.000000000000 3.000000000000
+vertex 2 3.600000000000 0.000000000000 3.000000000000
+vertex 3 3.600000000000 5.000000000000 3.000000000000
+vertex 4 0.000000000000 5.000000000000 3.000000000000
+vertex 5 0.000000000000 5.000000000000 0.000000000000
+vertex 6 3.600000000000 5.000000000000 0.000000000000
+vertex 7 3.600000000000 0.000000000000 0.000000000000
+vertex 8 0.000000000000 0.000000000000 0.000000000000
+vertex 9 3.072792206136 0.000000000000 2.560660171780
+vertex 10 0.527207793864 0.000000000000 2.560660171780
+vertex 11 0.527207793864 0.000000000000 0.439339828220
+vertex 12 3.072792206136 0.000000000000 0.439339828220
+
+
+zone OFFICE
+ceiling 1 1 2 3 4
+floor 2 5 6 7 8
+wall 3 4 3 6 5
+wall 4 3 2 7 6
+wall 5 1 4 5 8
+wall 6 2 1 8 7
+window 7 9 10 11 12
+_EXTENSION_BuildingGeometry_END_
+
+
+_EXTENSION_VirtualSurfaceGeometry_START_
+
+airnode OFFICE
+
+_EXTENSION_VirtualSurfaceGeometry_END_
+
+
+_EXTENSION_ExternalShadingGeometry_START_
+
+_EXTENSION_ExternalShadingGeometry_END_
+
+
+_EXTENSION_GeoPositionGeometry_START_
+_EXTENSION_GeoPositionGeometry_END_
+
+
+_EXTENSION_DaylightSensorPoints_START_
+zone OFFICE
+dgeopos 1 0.257100000000 0.250000000000 0.850000000000
+dgeopos 2 0.771400000000 0.250000000000 0.850000000000
+dgeopos 3 1.285700000000 0.250000000000 0.850000000000
+dgeopos 4 1.800000000000 0.250000000000 0.850000000000
+dgeopos 5 2.314300000000 0.250000000000 0.850000000000
+dgeopos 6 2.828600000000 0.250000000000 0.850000000000
+dgeopos 7 3.342900000000 0.250000000000 0.850000000000
+dgeopos 8 0.257100000000 0.750000000000 0.850000000000
+dgeopos 9 0.771400000000 0.750000000000 0.850000000000
+dgeopos 10 1.285700000000 0.750000000000 0.850000000000
+dgeopos 11 1.800000000000 0.750000000000 0.850000000000
+dgeopos 12 2.314300000000 0.750000000000 0.850000000000
+dgeopos 13 2.828600000000 0.750000000000 0.850000000000
+dgeopos 14 3.342900000000 0.750000000000 0.850000000000
+dgeopos 15 0.257100000000 1.250000000000 0.850000000000
+dgeopos 16 0.771400000000 1.250000000000 0.850000000000
+dgeopos 17 1.285700000000 1.250000000000 0.850000000000
+dgeopos 18 1.800000000000 1.250000000000 0.850000000000
+dgeopos 19 2.314300000000 1.250000000000 0.850000000000
+dgeopos 20 2.828600000000 1.250000000000 0.850000000000
+dgeopos 21 3.342900000000 1.250000000000 0.850000000000
+dgeopos 22 0.257100000000 1.750000000000 0.850000000000
+dgeopos 23 0.771400000000 1.750000000000 0.850000000000
+dgeopos 24 1.285700000000 1.750000000000 0.850000000000
+dgeopos 25 1.800000000000 1.750000000000 0.850000000000
+dgeopos 26 2.314300000000 1.750000000000 0.850000000000
+dgeopos 27 2.828600000000 1.750000000000 0.850000000000
+dgeopos 28 3.342900000000 1.750000000000 0.850000000000
+dgeopos 29 0.257100000000 2.250000000000 0.850000000000
+dgeopos 30 0.771400000000 2.250000000000 0.850000000000
+dgeopos 31 1.285700000000 2.250000000000 0.850000000000
+dgeopos 32 1.800000000000 2.250000000000 0.850000000000
+dgeopos 33 2.314300000000 2.250000000000 0.850000000000
+dgeopos 34 2.828600000000 2.250000000000 0.850000000000
+dgeopos 35 3.342900000000 2.250000000000 0.850000000000
+dgeopos 36 0.257100000000 2.750000000000 0.850000000000
+dgeopos 37 0.771400000000 2.750000000000 0.850000000000
+dgeopos 38 1.285700000000 2.750000000000 0.850000000000
+dgeopos 39 1.800000000000 2.750000000000 0.850000000000
+dgeopos 40 2.314300000000 2.750000000000 0.850000000000
+dgeopos 41 2.828600000000 2.750000000000 0.850000000000
+dgeopos 42 3.342900000000 2.750000000000 0.850000000000
+dgeopos 43 0.257100000000 3.250000000000 0.850000000000
+dgeopos 44 0.771400000000 3.250000000000 0.850000000000
+dgeopos 45 1.285700000000 3.250000000000 0.850000000000
+dgeopos 46 1.800000000000 3.250000000000 0.850000000000
+dgeopos 47 2.314300000000 3.250000000000 0.850000000000
+dgeopos 48 2.828600000000 3.250000000000 0.850000000000
+dgeopos 49 3.342900000000 3.250000000000 0.850000000000
+dgeopos 50 0.257100000000 3.750000000000 0.850000000000
+dgeopos 51 0.771400000000 3.750000000000 0.850000000000
+dgeopos 52 1.285700000000 3.750000000000 0.850000000000
+dgeopos 53 1.800000000000 3.750000000000 0.850000000000
+dgeopos 54 2.314300000000 3.750000000000 0.850000000000
+dgeopos 55 2.828600000000 3.750000000000 0.850000000000
+dgeopos 56 3.342900000000 3.750000000000 0.850000000000
+dgeopos 57 0.257100000000 4.250000000000 0.850000000000
+dgeopos 58 0.771400000000 4.250000000000 0.850000000000
+dgeopos 59 1.285700000000 4.250000000000 0.850000000000
+dgeopos 60 1.800000000000 4.250000000000 0.850000000000
+dgeopos 61 2.314300000000 4.250000000000 0.850000000000
+dgeopos 62 2.828600000000 4.250000000000 0.850000000000
+dgeopos 63 3.342900000000 4.250000000000 0.850000000000
+dgeopos 64 0.257100000000 4.750000000000 0.850000000000
+dgeopos 65 0.771400000000 4.750000000000 0.850000000000
+dgeopos 66 1.285700000000 4.750000000000 0.850000000000
+dgeopos 67 1.800000000000 4.750000000000 0.850000000000
+dgeopos 68 2.314300000000 4.750000000000 0.850000000000
+dgeopos 69 2.828600000000 4.750000000000 0.850000000000
+dgeopos 70 3.342900000000 4.750000000000 0.850000000000
+_EXTENSION_DaylightSensorPoints_END_
+
+
+_EXTENSION_AdditionalDaylightGeometry_START_
+vertex 13 0.5272077938642150 0.0000000000000000 0.4393398282201790
+vertex 14 0.5272077938642150 -0.3000000000000000 0.4393398282201790
+vertex 15 3.0727922061357900 -0.3000000000000000 0.4393398282201790
+vertex 16 3.0727922061357900 0.0000000000000000 0.4393398282201790
+vertex 17 3.0727922061357900 0.0000000000000000 2.5606601717798200
+vertex 18 3.0727922061357900 -0.3000000000000000 2.5606601717798200
+vertex 19 0.5272077938642150 -0.3000000000000000 2.5606601717798200
+vertex 20 0.5272077938642150 0.0000000000000000 2.5606601717798200
+
+surface plastic_50 30001  13 14 15 16
+surface plastic_50 30002  17 18 19 20
+surface plastic_50 30003  20 19 14 13
+surface plastic_50 30004  16 15 18 17
+
+_EXTENSION_AdditionalDaylightGeometry_END_
+
+
+_EXTENSION_VAMPARAMS_START_
+_EXTENSION_VAMPARAMS_END_
+
+
+
+
+
+
+
+          ***** WALL TRANSFERFUNCTION CALCULATIONS *****
+
+
+              ---------- WALL TYPE EXTW_LIGHT                                                  ----------
+
+       THERMAL CONDUCTANCE, U=     0.82479 kJ/h m2K; U-Wert=     0.22052 W/m2K
+              (incl. alpha_i=7.7 W/m^2 K and alpha_o=25 W/m^2 K)
+
+                        TRANSFERFUNCTION COEFFICIENTS
+   K            A              B              C              D
+
+   0       2.3069709E+01    1.3632442E-01    1.2770944E+01    1.0000000E+00
+   1      -2.6312692E+01    4.7664019E-01   -1.4100562E+01   -1.8415103E-01
+   2       3.9208824E+00    6.0026497E-02    2.0050082E+00    2.3275559E-04
+   3      -4.8028549E-03    1.0564010E-04   -2.2937016E-03
+   4       1.0921540E-08    7.0290160E-10    2.6316769E-09
+  SUM      6.7309674E-01    6.7309674E-01    6.7309674E-01    8.1608172E-01
+
+
+              ---------- WALL TYPE INTW_LIGHT                                                  ----------
+
+       THERMAL CONDUCTANCE, U=     0.81712 kJ/h m2K; U-Wert=     0.21855 W/m2K
+              (incl. alpha_i=7.7 W/m^2 K and alpha_o=25 W/m^2 K)
+
+                        TRANSFERFUNCTION COEFFICIENTS
+   K            A              B              C              D
+
+   0       1.3199264E+01    1.1707063E-01    1.3199264E+01    1.0000000E+00
+   1      -1.4697065E+01    4.7213909E-01   -1.4697065E+01   -1.9122121E-01
+   2       2.1620778E+00    7.1705541E-02    2.1620778E+00    3.0960357E-04
+   3      -3.1544128E-03    2.0753925E-04   -3.1544128E-03
+   4       2.0996746E-08    5.7679166E-09    2.0996743E-08
+  SUM      6.6112281E-01    6.6112281E-01    6.6112281E-01    8.0908839E-01
+
+
+              ---------- WALL TYPE INTF_LIGHT                                                  ----------
+
+       THERMAL CONDUCTANCE, U=     1.82748 kJ/h m2K; U-Wert=     0.46731 W/m2K
+              (incl. alpha_i=7.7 W/m^2 K and alpha_o=25 W/m^2 K)
+
+                        TRANSFERFUNCTION COEFFICIENTS
+   K            A              B              C              D
+
+   0       1.5509855E+01    1.7785316E-04    2.0636832E+01    1.0000000E+00
+   1      -2.9239967E+01    9.8255685E-03   -4.2498153E+01   -1.2128877E+00
+   2       1.6225618E+01    1.9721660E-02    2.5750035E+01    2.3653496E-01
+   3      -2.5127388E+00    4.3039070E-03   -3.8827833E+00   -4.9866635E-03
+   4       5.1464183E-02    9.2193864E-05    2.8235999E-02    1.0648257E-05
+   5      -1.0934582E-04    1.2107969E-07   -4.5059283E-05
+  SUM      3.4121302E-02    3.4121304E-02    3.4121303E-02    1.8671218E-02
+
+
+              ---------- WALL TYPE INTCL_LIGHT                                                 ----------
+
+       THERMAL CONDUCTANCE, U=     1.82748 kJ/h m2K; U-Wert=     0.46731 W/m2K
+              (incl. alpha_i=7.7 W/m^2 K and alpha_o=25 W/m^2 K)
+
+                        TRANSFERFUNCTION COEFFICIENTS
+   K            A              B              C              D
+
+   0       2.0636832E+01    1.7785316E-04    1.5509855E+01    1.0000000E+00
+   1      -4.2498153E+01    9.8255685E-03   -2.9239967E+01   -1.2128877E+00
+   2       2.5750035E+01    1.9721660E-02    1.6225618E+01    2.3653496E-01
+   3      -3.8827833E+00    4.3039070E-03   -2.5127388E+00   -4.9866635E-03
+   4       2.8235999E-02    9.2193864E-05    5.1464183E-02    1.0648257E-05
+   5      -4.5059283E-05    1.2107969E-07   -1.0934582E-04
+  SUM      3.4121303E-02    3.4121304E-02    3.4121302E-02    1.8671218E-02
+
+
+
+
+  ************* REQUIRED INPUTS *************
+
+
+*:InpNR   | Label                                                       | Unit       | INPUT DESCRIPTION                                                      | Old label
+
+* |    1 | TAMB                                                         | C          | ambient temperature                                                    | TAMB
+* |    2 | RELHUMAMB                                                    | %          | relative ambient humidity                                               | ARELHUM
+* |    3 | TSKY                                                         | C          | effective sky temperature for longwave radiation exchange (FSKY)       | TSKY
+* |    4 | TSGRD                                                        | C          | effective ground temperature for longwave radiation exchange (1-FSKY)  | TSGRD
+* |    5 | AZEN                                                         | degrees    | solar zenith angle                                                        | AZEN 
+* |    6 | AAZM                                                         | degrees    | solar azimuth angle (0=facing equator, 90=facing west, -90=270=facing east)  | AAZM 
+* |    7 | GRDREF                                                       | any        | ground reflection                     | GRDREF 
+* |    8 | HT_BUI_OFFICE                                                | any        | Input                                                                  | HT_BUI_OFF
+* |    9 | Q_PERS_KJ_OFFICE                                             | any        | Input                                                                  | Q_PERS_KJ_
+* |   10 | Q_LIGHT_KJ_OFFICE                                            | any        | Input                                                                  | Q_LIGHT_KJ
+* |   11 | TAIR_OFFICE                                                  | any        | Input                                                                  | TAIR_OFFIC
+* |   12 | Q_COMP_KJ_OFFICE                                             | any        | Input                                                                  | Q_COMP_KJ_
+* |   13 | ACR_INF_OFFICE                                               | any        | Input                                                                  | ACR_INF_OF
+* |   14 | TAIR_SET_HT_OFFICE                                           | any        | Input                                                                  | TAIR_SET_H
+
+
+
+
+  ************* DESIRED OUTPUTS *************
+
+
+*:OutNr  | Label                                                             | Unit       | ZNr  | Airnode                                          | SurfID/ComfortID | OUTPUT DESCRIPTION                                                                                              | old label
+
+* |    1 | TAIR_OFFICE                                                       | C          |    1 | OFFICE                                                       |      | air temperature of airnode                                                             | TAIR     1
+* |    2 | QSENS_OFFICE                                                      | kJ/hr      |    1 | OFFICE                                                       |      | sens. energy demand of airnode, heating(-)        ,cooling(+)                                                             | QSENS    1
+* |    3 | QCSURF_OFFICE                                                     | kJ/hr      |    1 | OFFICE                                                       |      | total convection to air from all surf. inc. int.shading                                                             | QCSURF   1
+* |    4 | QINF_OFFICE                                                       | kJ/hr      |    1 | OFFICE                                                       |      | sens. infiltration energy gain of airnode                                                             | QINF     1
+* |    5 | QVENT_OFFICE                                                      | kJ/hr      |    1 | OFFICE                                                       |      | sens. ventilation energy gain of airnode                                                             | QVENT    1
+* |    6 | QGCONV_OFFICE                                                     | kJ/hr      |    1 | OFFICE                                                       |      | internal convective gains of airnode                                                             | QGCONV   1
+* |    7 | RELHUM_OFFICE                                                     | %          |    1 | OFFICE                                                       |      | relativ humidity of airnode air                                                             | RELHUM   1
+* |    8 | ABSHUM_OFFICE                                                     | kg/kg      |    1 | OFFICE                                                       |      | absolute air humidity                                                             | ABSHUM   1
+* |    9 | QLATD_OFFICE                                                      | kJ/hr      |    1 | OFFICE                                                       |      | lat. energy demand of airnode, humidif.(-), dehumidif.(+)                                                             | QLATD    1
+* |   10 | QSOLTR_OFFICE                                                     | kJ/hr      |    1 | OFFICE                                                       |      | total s-wave solar radiation through ext. windows of airnode (but not kept 100 % in airnode)                                                             | QSOLTR   1
+* |   11 | QGRAD_OFFICE                                                      | kJ/hr      |    1 | OFFICE                                                       |      | internal radiative gain                                                             | QGRAD    1
+* |   12 | TOP_OFFICE                                                        | C          |    1 | OFFICE                                                       |      | operative room temperature                                                             | TOP      1
+* |   13 | QGLIGHT_OFFICE                                                    | kJ/hr      |    1 | OFFICE                                                       |      | Sensible energy gain from "lights" gains of airnode                                                             | QGLIGHT    1
+* |   14 | QGEQUIP_OFFICE                                                    | kJ/hr      |    1 | OFFICE                                                       |      | Sensible energy gain from "equipment" gains of airnode                                                             | QGEQUIP    1
+* |   15 | QGMISC_OFFICE                                                     | kJ/hr      |    1 | OFFICE                                                       |      | Sensible energy gain from "miscellaneous" gains of airnode                                                             | QGMISC    1
+* |   16 | QGPEOPLE_OFFICE                                                   | kJ/hr      |    1 | OFFICE                                                       |      | Sensible energy gain from "people" gains of airnode                                                             | QGPEOPLE    1
+* |   17 | QELLIGHT_OFFICE                                                   | kJ/hr      |    1 | OFFICE                                                       |      | Electric energy demand by "lights" gains of airnode                                                             | QELLIGHT    1
+* |   18 | QELEQUIP_OFFICE                                                   | kJ/hr      |    1 | OFFICE                                                       |      | Electric energy demand by "equipment" gains of airnode                                                             | QELEQUIP    1
+* |   19 | QELMISC_OFFICE                                                    | kJ/hr      |    1 | OFFICE                                                       |      | Electric energy demand by "miscellaneous" gains of airnode                                                             | QELMISC    1
+* |   20 | QELHEAT_OFFICE                                                    | kJ/hr      |    1 | OFFICE                                                       |      | Electric energy demand by heating of airnode                                                             | QELHEAT    1
+* |   21 | QELCOOL_OFFICE                                                    | kJ/hr      |    1 | OFFICE                                                       |      | Electric energy demand by cooling of airnode                                                             | QELCOOL    1
+* |   22 | QELVENT_OFFICE                                                    | kJ/hr      |    1 | OFFICE                                                       |      | Electric energy demand by ventilation of airnode                                                             | QELPVENT    1
+* |   23 | QGTHB_OFFICE                                                      | kJ/hr      |    1 | OFFICE                                                       |      | Sensible energy gain from "thermal bridge" gains/losses of airnode                                                             | QGTHB    1
+* |   24 | AREADLC1_OFFICE                                                   | m²         |    1 | OFFICE                                                       |      | Floor area related to 1st daylight controlled gain                                                             | AREADLC1    1
+* |   25 | ILLUMDLC1_OFFICE                                                  | lux        |    1 | OFFICE                                                       |      | Daylight illuminance of 1st daylight controlled gain                                                             | ILLUMDLC1    1
+* |   26 | ILLSETDLC1_OFFICE                                                 | lux        |    1 | OFFICE                                                       |      | Illuminance set point of 1st daylight controlled gain                                                             | ILLSETDLC1    1
+* |   27 | MODEDLC1_OFFICE                                                   | -          |    1 | OFFICE                                                       |      | Lighting control type of 1st daylight controlled gain                                                             | MODEDLC1    1
+* |   28 | FDIMDLC1_OFFICE                                                   | -          |    1 | OFFICE                                                       |      | dimming fraction of 1st daylight controlled gain                                                             | FDIMDLC1    1
+* |   29 | CDADLC1_OFFICE                                                    | -          |    1 | OFFICE                                                       |      | Continuous daylight autonomy  of 1st daylight controlled gain (0...1)                                                             | CDADLC1    1
+* |   30 | DADLC1_OFFICE                                                     | -          |    1 | OFFICE                                                       |      | Daylight autonomie of 1st daylight controlled gain (0 or 1)                                                             | DADLC1    1
+* |   31 | UDIDLC1_OFFICE                                                    | -          |    1 | OFFICE                                                       |      | Useful daylight illuminance of 1st daylight controlled gain (0 or 1)                                                             | UDIDLC1    1
+* |   32 | ILLUM_H                                                           | lux        |    1 | OFFICE                                                       |      | Global horizontal illuminance outside (without shading effects)                                                             | ILLUM_H    1
+* |   33 | QAHU_H_OFFICE                                                     | kJ/hr      |    1 | OFFICE                                                       |      | total heating energy to condition supply air to set point conditions (sum of defined ventilations with supplyair conditioning)           | QAHU_H    1
+* |   34 | QAHU_C_OFFICE                                                     | kJ/hr      |    1 | OFFICE                                                       |      | total cooling energy to condition supply air to set point conditions (sum of defined ventilations with supplyair conditioning)           | QAHU_C    1
+* |   35 | QAHU_SENSH_OFFICE                                                 | kJ/hr      |    1 | OFFICE                                                       |      | heating energy to condition supply air to reach set point temperature after HX, Dehum (sum of defined ventilations with supply air conditioning)           | QAHU_SENSH    1
+* |   36 | QAHU_SENSC_OFFICE                                                 | kJ/hr      |    1 | OFFICE                                                       |      | cooling energy to condition supply air to reach set point temperature after HX, Dehum (sum of defined ventilations with supply air conditioning)           | QAHU_SENSC    1
+* |   37 | QAHU_HRSENSH_OFFICE                                               | kJ/hr      |    1 | OFFICE                                                       |      | heating power provided by heat recovery unit (sum of defined ventilations with supply air conditioning)                                                             | QAHU_HRSENSH    1
+* |   38 | QAHU_HRSENSC_OFFICE                                               | kJ/hr      |    1 | OFFICE                                                       |      | cooling power provided by heat recovery unit (sum of defined ventilations with supply air conditioning)                                                             | QAHU_HRSENSC    1
+* |   39 | QAHU_HUMH_OFFICE                                                  | kJ/hr      |    1 | OFFICE                                                       |      | heating power for humidification process (sum of defined ventilations with supply air conditioning)                                                             | QAHU_HUMH    1
+* |   40 | QAHU_DEHUMC_OFFICE                                                | kJ/hr      |    1 | OFFICE                                                       |      | heating energy for dehumidification process (sum of defined ventilations with supply air conditioning)                                                             | QAHU_DEHUMC    1
+* |   41 | QAHU_REHEATH_OFFICE                                               | kJ/hr      |    1 | OFFICE                                                       |      | heating energy to condition supply air to reach set point temperature after dehumdification process (sum of defined ventilations with supply air conditioning)           | QAHU_REHEATH    1
+* |   42 | TAIR_WB_OFFICE                                                    | C          |    1 | OFFICE                                                       |      | wet bulb temperature of airnode                                                             | TAIR_WB    1
+* |   43 | TAIR_DP_OFFICE                                                    | C          |    1 | OFFICE                                                       |      | dew point bulb temperature of airnode                                                             | TAIR_DP    1
+* |   44 | TAHU_HR_OFFICE                                                    | C          |    1 | OFFICE                                                       |      | dry bulb temperature after heat recovery of 1st ventilation with supply air conditioning                                                             | TAHU_HR    1
+* |   45 | RHAHU_HR_OFFICE                                                   | C          |    1 | OFFICE                                                       |      | rel. humidity of air after heat recovery of 1st ventilation with supply air conditioning                                                             | RHAHU_HR    1
+* |   46 | WAHU_HR_OFFICE                                                    | C          |    1 | OFFICE                                                       |      | specific humidity of air after heat recovery of 1st ventilation with supply air conditioning                                                             | SHAHU_HR    1
+* |   47 | QSOLAIR_OFFICE                                                    | kJ/hr      |    1 | OFFICE                                                       |      | conv. energy gain of airnode due to solar rradiation entering all external windows which is immediately transformed into a convective heat flow      | QSOLAIR    1
+* |   48 | QCOUP_OFFICE                                                      | kJ/hr      |    1 | OFFICE                                                       |      | sens. coupling energy gain of airnode                                                             | QCOUP    1
+* |   49 | SCHED_WORK                                                        | -          |      |                                                              |      | values of schedule WORK                                                                                                 | WORK                
+* |   50 | STDFILE_DL_OFFICE                                                 | -          |    1 | OFFICE                                                       |      | Daylight standard output file (selected ON/OFF factor is used by output statistics)                                                              | STDFILE_DL    1
+* |   51 | SHADCNTRL_S7                                                      | kJ/hr      |    1 | OFFICE                                                       |    7 | shading control signal of radiation depending control (0 or 1; 0 if not used)->WIN=WIN_W1_7200_S_0_90:ORI=S_0_90                          | SHADCNTRL      7
+* |   52 | IBSHAD_S7                                                         | kJ/hr      |    1 | OFFICE                                                       |    7 | Total direct radiation on outside of external surface (incl. external shading) ->WIN=WIN_W1_7200_S_0_90:ORI=S_0_90                          | IBSHAD    7
+* |   53 | IDSHAD_S7                                                         | kJ/hr      |    1 | OFFICE                                                       |    7 | Total diffuse radiation on outside of external surface (incl. external shading) ->WIN=WIN_W1_7200_S_0_90:ORI=S_0_90                          | IDSHAD    7
+* |   54 | AREA_S7                                                           | m2         |    1 | OFFICE                                                       |    7 | surface area->WIN=WIN_W1_7200_S_0_90:ORI=S_0_90                          | AREA    7
+* |   55 | IB_S6                                                             | kJ/hr      |    1 | OFFICE                                                       |    6 | total direct radiation incident on outside (without shading)->WALL=EXTW_LIGHT:ORI=S_0_90                                 | IB      6
+* |   56 | ID_S6                                                             | kJ/hr      |    1 | OFFICE                                                       |    6 | total diffuse radiation incident on outside (without shading)->WALL=EXTW_LIGHT:ORI=S_0_90                                 | ID      6
+* |   57 | IT_S6                                                             | kJ/hr      |    1 | OFFICE                                                       |    6 | total (dif+dir) radiation incident on outside (without shading)->WALL=EXTW_LIGHT:ORI=S_0_90                                 | IT      6
+* |   58 | AREA_S6                                                           | m2         |    1 | OFFICE                                                       |    6 | surface area->WALL=EXTW_LIGHT:ORI=S_0_90                                 | AREA    6
+* |   59 | QCOMI_S7                                                          | kJ/hr      |    1 | OFFICE                                                       |    7 | inside surface conv-l-wave gains->WIN=WIN_W1_7200_S_0_90:ORI=S_0_90                          | QCOMI   7
+* |   60 | QCOMI_S3                                                          | kJ/hr      |    1 | OFFICE                                                       |    3 | inside surface conv-l-wave gains->WALL=INTW_LIGHT:KNOWN BOUNDARY                             | QCOMI   3
+* |   61 | QCOMI_S4                                                          | kJ/hr      |    1 | OFFICE                                                       |    4 | inside surface conv-l-wave gains->WALL=INTW_LIGHT:KNOWN BOUNDARY                             | QCOMI   4
+* |   62 | QCOMI_S5                                                          | kJ/hr      |    1 | OFFICE                                                       |    5 | inside surface conv-l-wave gains->WALL=INTW_LIGHT:KNOWN BOUNDARY                             | QCOMI   5
+* |   63 | QCOMI_S6                                                          | kJ/hr      |    1 | OFFICE                                                       |    6 | inside surface conv-l-wave gains->WALL=EXTW_LIGHT:ORI=S_0_90                                 | QCOMI   6
+* |   64 | QCOMI_S2                                                          | kJ/hr      |    1 | OFFICE                                                       |    2 | inside surface conv-l-wave gains->FLOOR=INTF_LIGHT:KNOWN BOUNDARY                            | QCOMI   2
+* |   65 | QCOMI_S1                                                          | kJ/hr      |    1 | OFFICE                                                       |    1 | inside surface conv-l-wave gains->CEILING=INTCL_LIGHT:KNOWN BOUNDARY                         | QCOMI   1
+* |   66 | QSIAB_S7                                                          | kJ/hr      |    1 | OFFICE                                                       |    7 | solar rad. absorbed at inside surface of ->WIN=WIN_W1_7200_S_0_90:ORI=S_0_90                          | QSIAB   7
+* |   67 | QSIAB_S3                                                          | kJ/hr      |    1 | OFFICE                                                       |    3 | solar rad. absorbed at inside surface of ->WALL=INTW_LIGHT:KNOWN BOUNDARY                             | QSIAB   3
+* |   68 | QSIAB_S4                                                          | kJ/hr      |    1 | OFFICE                                                       |    4 | solar rad. absorbed at inside surface of ->WALL=INTW_LIGHT:KNOWN BOUNDARY                             | QSIAB   4
+* |   69 | QSIAB_S5                                                          | kJ/hr      |    1 | OFFICE                                                       |    5 | solar rad. absorbed at inside surface of ->WALL=INTW_LIGHT:KNOWN BOUNDARY                             | QSIAB   5
+* |   70 | QSIAB_S6                                                          | kJ/hr      |    1 | OFFICE                                                       |    6 | solar rad. absorbed at inside surface of ->WALL=EXTW_LIGHT:ORI=S_0_90                                 | QSIAB   6
+* |   71 | QSIAB_S2                                                          | kJ/hr      |    1 | OFFICE                                                       |    2 | solar rad. absorbed at inside surface of ->FLOOR=INTF_LIGHT:KNOWN BOUNDARY                            | QSIAB   2
+* |   72 | QSIAB_S1                                                          | kJ/hr      |    1 | OFFICE                                                       |    1 | solar rad. absorbed at inside surface of ->CEILING=INTCL_LIGHT:KNOWN BOUNDARY                         | QSIAB   1
+* |   73 | QABSI_S7                                                          | kJ/hr      |    1 | OFFICE                                                       |    7 | solar+rad.gains absorbed inside ->WIN=WIN_W1_7200_S_0_90:ORI=S_0_90                          | QABSI   7
+* |   74 | QABSI_S3                                                          | kJ/hr      |    1 | OFFICE                                                       |    3 | solar+rad.gains absorbed inside ->WALL=INTW_LIGHT:KNOWN BOUNDARY                             | QABSI   3
+* |   75 | QABSI_S4                                                          | kJ/hr      |    1 | OFFICE                                                       |    4 | solar+rad.gains absorbed inside ->WALL=INTW_LIGHT:KNOWN BOUNDARY                             | QABSI   4
+* |   76 | QABSI_S5                                                          | kJ/hr      |    1 | OFFICE                                                       |    5 | solar+rad.gains absorbed inside ->WALL=INTW_LIGHT:KNOWN BOUNDARY                             | QABSI   5
+* |   77 | QABSI_S6                                                          | kJ/hr      |    1 | OFFICE                                                       |    6 | solar+rad.gains absorbed inside ->WALL=EXTW_LIGHT:ORI=S_0_90                                 | QABSI   6
+* |   78 | QABSI_S2                                                          | kJ/hr      |    1 | OFFICE                                                       |    2 | solar+rad.gains absorbed inside ->FLOOR=INTF_LIGHT:KNOWN BOUNDARY                            | QABSI   2
+* |   79 | QABSI_S1                                                          | kJ/hr      |    1 | OFFICE                                                       |    1 | solar+rad.gains absorbed inside ->CEILING=INTCL_LIGHT:KNOWN BOUNDARY                         | QABSI   1
+* |   80 | TSI_S7                                                            | C          |    1 | OFFICE                                                       |    7 | inside surface temperature ->WIN=WIN_W1_7200_S_0_90:ORI=S_0_90                          | TSI    7
+
+
+
+              *** Used opaque construction types ***
+            (u-value incl. h_i=7.7 W/m^2 K and h_o=25 W/m^2 K)
+
+   Construction type name                                       | Total area      | u-value         | PERT            | PENRT
+                                                                | m2              | W/m2 K          | MJ/m2           | MJ/m2
+  --------------------------------------------------------------------------------------------------------------------------------------
+   EXTW_LIGHT                                                   |           5.400 |           0.221 |           0.000 |           0.000
+   INTW_LIGHT                                                   |          40.800 |           0.219 |           0.000 |           0.000
+   INTF_LIGHT                                                   |          18.000 |           0.467 |           0.000 |           0.000
+   INTCL_LIGHT                                                  |          18.000 |           0.467 |           0.000 |           0.000
+
+
+
+              *** Used window construction types ***
+            ( u-value not availble - calculated during simulation)
+
+   Construction type name                                       | Total area      | u-value         | PERT            | PENRT
+                                                                | m2              | W/m2 K          | MJ/m2           | MJ/m2
+  --------------------------------------------------------------------------------------------------------------------------------------
+   WIN_W1_7200_S_0_90                                           |           5.400 |          -1.000 |           0.000 |           0.000

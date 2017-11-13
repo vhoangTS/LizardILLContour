@@ -1,0 +1,64 @@
+
+#====================
+# DAYSIM header file
+#====================
+
+project_name		   001_shd0_OFFICE
+project_directory	         S:\VuHoang\__TRNLizard_is_Life\_TRNLizard_Support\_LECTURES\TSA_2017_2018\Example_test\Model\V0_DAYLIGHT\Daylight\
+bin_directory		   w:\Trnsys18\Building\trnRAD\DAYSIM\bin\
+tmp_directory		   S:\VuHoang\__TRNLizard_is_Life\_TRNLizard_Support\_LECTURES\TSA_2017_2018\Example_test\Model\V0_DAYLIGHT\Daylight\\tmp
+material_directory        rad
+##################
+# site information
+##################
+place NoName
+latitude 48.7716026377
+longitude -9.17632116345
+time_zone -15.0
+site_elevation 253
+ground_reflectance 0.2
+wea_data_file wea\NoName_60min.wea
+wea_data_file_units 2
+first_weekday 1
+time_step 60
+wea_data_short_file wea\NoName_60min.wea
+wea_data_short_file_units 2
+lower_direct_threshold 2
+lower_diffuse_threshold 2
+output_units 2
+
+######################
+# building information
+######################
+material_file rad\material.rad
+geometry_file 001_shd0_OFFICE.rad
+# scene_rotation is not used !!
+scene_rotation_angle 0
+DDS_sensor_file 001_shd0_OFFICE.dds
+DDS_file 001_shd0_OFFICE.sen
+sensor_file 001_OFFICE.pts
+# radiance_source_files 1,001_shd0_OFFICE.rad
+shading 1
+001_shd0_OFFICE 001_shd0_OFFICE.dc  001_shd0_OFFICE.ill
+sensor_file_unit 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0  
+sensor_file_info 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+ViewPoint 0
+
+######################
+# RADIANCE parameters
+######################
+
+ab  6 
+ad  768 
+as  384 
+ar  192 
+aa  0.1 
+
+lr  6.0
+st  0.15
+sj  1.0
+lw  0.004
+dj  0.0
+ds  0.2
+dr  2.0
+dp  512.0

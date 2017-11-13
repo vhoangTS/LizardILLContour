@@ -1,0 +1,134 @@
+trnRAD Version: 1.22
+
+Note: Found daylight sensor ID 1 in Zone OFFICE
+Note: Found daylight sensor ID 2 in Zone OFFICE
+Note: Found daylight sensor ID 3 in Zone OFFICE
+Note: Found daylight sensor ID 4 in Zone OFFICE
+Note: Found daylight sensor ID 5 in Zone OFFICE
+Note: Found daylight sensor ID 6 in Zone OFFICE
+Note: Found daylight sensor ID 7 in Zone OFFICE
+Note: Found daylight sensor ID 8 in Zone OFFICE
+Note: Found daylight sensor ID 9 in Zone OFFICE
+Note: Found daylight sensor ID 10 in Zone OFFICE
+Note: Found daylight sensor ID 11 in Zone OFFICE
+Note: Found daylight sensor ID 12 in Zone OFFICE
+Note: Found daylight sensor ID 13 in Zone OFFICE
+Note: Found daylight sensor ID 14 in Zone OFFICE
+Note: Found daylight sensor ID 15 in Zone OFFICE
+Note: Found daylight sensor ID 16 in Zone OFFICE
+Note: Found daylight sensor ID 17 in Zone OFFICE
+Note: Found daylight sensor ID 18 in Zone OFFICE
+Note: Found daylight sensor ID 19 in Zone OFFICE
+Note: Found daylight sensor ID 20 in Zone OFFICE
+Note: Found daylight sensor ID 21 in Zone OFFICE
+Note: Found daylight sensor ID 22 in Zone OFFICE
+Note: Found daylight sensor ID 23 in Zone OFFICE
+Note: Found daylight sensor ID 24 in Zone OFFICE
+Note: Found daylight sensor ID 25 in Zone OFFICE
+Note: Found daylight sensor ID 26 in Zone OFFICE
+Note: Found daylight sensor ID 27 in Zone OFFICE
+Note: Found daylight sensor ID 28 in Zone OFFICE
+Note: Found daylight sensor ID 29 in Zone OFFICE
+Note: Found daylight sensor ID 30 in Zone OFFICE
+Note: Found daylight sensor ID 31 in Zone OFFICE
+Note: Found daylight sensor ID 32 in Zone OFFICE
+Note: Found daylight sensor ID 33 in Zone OFFICE
+Note: Found daylight sensor ID 34 in Zone OFFICE
+Note: Found daylight sensor ID 35 in Zone OFFICE
+Note: Found daylight sensor ID 36 in Zone OFFICE
+Note: Found daylight sensor ID 37 in Zone OFFICE
+Note: Found daylight sensor ID 38 in Zone OFFICE
+Note: Found daylight sensor ID 39 in Zone OFFICE
+Note: Found daylight sensor ID 40 in Zone OFFICE
+Note: Found daylight sensor ID 41 in Zone OFFICE
+Note: Found daylight sensor ID 42 in Zone OFFICE
+Note: Found daylight sensor ID 43 in Zone OFFICE
+Note: Found daylight sensor ID 44 in Zone OFFICE
+Note: Found daylight sensor ID 45 in Zone OFFICE
+Note: Found daylight sensor ID 46 in Zone OFFICE
+Note: Found daylight sensor ID 47 in Zone OFFICE
+Note: Found daylight sensor ID 48 in Zone OFFICE
+Note: Found daylight sensor ID 49 in Zone OFFICE
+Note: Found daylight sensor ID 50 in Zone OFFICE
+Note: Found daylight sensor ID 51 in Zone OFFICE
+Note: Found daylight sensor ID 52 in Zone OFFICE
+Note: Found daylight sensor ID 53 in Zone OFFICE
+Note: Found daylight sensor ID 54 in Zone OFFICE
+Note: Found daylight sensor ID 55 in Zone OFFICE
+Note: Found daylight sensor ID 56 in Zone OFFICE
+Note: Found daylight sensor ID 57 in Zone OFFICE
+Note: Found daylight sensor ID 58 in Zone OFFICE
+Note: Found daylight sensor ID 59 in Zone OFFICE
+Note: Found daylight sensor ID 60 in Zone OFFICE
+Note: Found daylight sensor ID 61 in Zone OFFICE
+Note: Found daylight sensor ID 62 in Zone OFFICE
+Note: Found daylight sensor ID 63 in Zone OFFICE
+Note: Found daylight sensor ID 64 in Zone OFFICE
+Note: Found daylight sensor ID 65 in Zone OFFICE
+Note: Found daylight sensor ID 66 in Zone OFFICE
+Note: Found daylight sensor ID 67 in Zone OFFICE
+Note: Found daylight sensor ID 68 in Zone OFFICE
+Note: Found daylight sensor ID 69 in Zone OFFICE
+Note: Found daylight sensor ID 70 in Zone OFFICE
+Note: Geometry Rotation of 0.0
+
+Note: Writing state shd0 hea file: S:\VuHoang\__TRNLizard_is_Life\_TRNLizard_Support\_LECTURES\TSA_2017_2018\Example_test\Model\V0_DAYLIGHT\Daylight\001_shd0_OFFICE.hea
+Note: Writing state shd0 rad file: S:\VuHoang\__TRNLizard_is_Life\_TRNLizard_Support\_LECTURES\TSA_2017_2018\Example_test\Model\V0_DAYLIGHT\Daylight\001_shd0_OFFICE.rad
+Note: Writing state shd1 hea file: S:\VuHoang\__TRNLizard_is_Life\_TRNLizard_Support\_LECTURES\TSA_2017_2018\Example_test\Model\V0_DAYLIGHT\Daylight\001_shd1_OFFICE.hea
+Note: Writing state shd1 rad file: S:\VuHoang\__TRNLizard_is_Life\_TRNLizard_Support\_LECTURES\TSA_2017_2018\Example_test\Model\V0_DAYLIGHT\Daylight\001_shd1_OFFICE.rad
+Note: Writing state shd1 pts file: S:\VuHoang\__TRNLizard_is_Life\_TRNLizard_Support\_LECTURES\TSA_2017_2018\Example_test\Model\V0_DAYLIGHT\Daylight\001_OFFICE.pts
+Note: Maximum scene size D_max = 3.6
+Note: Rmin = (D_max*aa)/ar = 0.001875 m
+Note: Rmin is the minimum separation for cached illuminance, please select aa and ar properly to meet the desired accuracy
+
+Note: Calculation CLASSIC state shd0 diffuse started
+Note: Calculation CLASSIC state shd0 direct started
+Note: Calculation CLASSIC state shd1 diffuse started
+Note: Calculation CLASSIC state shd1 direct started
+=======================================================
+= gen_dc: calculate diffuse daylight coefficients     =
+= (ignore WARNING: no light sources found)            =
+= (this simulation may take several minutes to hours) =
+=======================================================
+calculate diffuse daylight coefficients for variant 001_shd1_OFFICE...
+rtrace_dc: warning - no light sources found
+Note: Calculation CLASSIC state shd1 diffuse done
+=======================================================
+= gen_dc: calculate diffuse daylight coefficients     =
+= (ignore WARNING: no light sources found)            =
+= (this simulation may take several minutes to hours) =
+=======================================================
+calculate diffuse daylight coefficients for variant 001_shd0_OFFICE...
+rtrace_dc: warning - no light sources found
+Note: Calculation CLASSIC state shd0 diffuse done
+=======================================================
+= gen_dc: calculate direct daylight coefficients      =
+= (this simulation may take several minutes to hours) =
+=======================================================
+calculate 65 direct daylight coefficients for variant 001_shd1_OFFICE...
+Note: Calculation CLASSIC state shd1 direct done
+=======================================================
+= gen_dc: calculate direct daylight coefficients      =
+= (this simulation may take several minutes to hours) =
+=======================================================
+calculate 65 direct daylight coefficients for variant 001_shd0_OFFICE...
+Note: Calculation CLASSIC state shd0 direct done
+Note: State shd0 daylight coefficients are summarized
+Note: State shd1 daylight coefficients are summarized
+Note: CLASSIC Calculation Done
+
+
+
+START_DAYSIM_Type_INFO
+calculation_mode <CLASSIC>
+latitude 48.7716026377
+longitude -9.17632116345
+time_zone -15.0
+site_elevation 253
+scene_rotation_angle 0
+ground_reflectance 0.2
+* sensor info: zone no_sensors dGeoPos_IDs
+001_OFFICE 70 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 
+STOP_DAYSIM_Type_INFO
+
+Note: trnRAD successfully finished!

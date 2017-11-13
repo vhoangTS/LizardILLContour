@@ -1,0 +1,7 @@
+# gensky -ang 45 0 -c -B 55.866
+# Ground ambient level: 17.8
+
+void brightfunc skyfunc
+2 skybr skybright.cal
+0
+3 2 2.29e+01 3.56e+00

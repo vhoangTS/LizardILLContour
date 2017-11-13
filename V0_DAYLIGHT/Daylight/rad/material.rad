@@ -1,0 +1,1125 @@
+##########################################################
+### radiance material file
+##########################################################
+#
+# syntax description:
+# '#'       - to start a comment lines 
+#
+# each material description starts with a line: void material name
+# with
+#   void      - key word for defining a radiance material
+#   material
+#             - glass (transparent material )
+#             - plastic (opace material with uncolored highlights)
+#             - metal (similar to plastic, but specular highlights are modified by the material color)
+#             - mirror (used for reflecting planar surfaces)
+#  name       - referenced   for TRNSYS Type56 daylight material definition
+#
+# see material syntax in each section 
+# see also http://radsite.lbl.gov/radiance/refer/ray.html
+##########################################################
+
+
+########### glazings #####################################
+# glass_ syntax description : #############################
+#   void glass name
+#   0 0 3 transmissivity_red transmissivity_green transmissivity_blue
+
+
+# glass_00
+# visual transmittance: 0%
+# visual transmissivity: 0%
+void glass glass_00
+0 0 3 0 0 0
+
+# glass_01
+# visual transmittance: 1%
+# visual transmissivity: 1.09%
+void glass glass_01
+0 0 3 .011 .011 .011
+
+# glass_02
+# visual transmittance: 2%
+# visual transmissivity: 2.18%
+void glass glass_02
+0
+0
+3 .0218 .0218 .0218
+
+# glass_03
+# visual transmittance: 3%
+# visual transmissivity:3.27%
+void glass glass_03
+0
+0
+3 .0327 .0327 .0327
+
+# glass_04
+# visual transmittance: 4%
+# visual transmissivity: 4.36% 
+void glass glass_04 
+0
+0
+3 .0436 .0436 .0436
+
+# glass_05
+# visual transmittance: 5%
+# visual transmissivity: 5.45%
+void glass glass_05
+0
+0
+3 .0545 .0545 .0545
+
+# glass_06
+# visual transmittance: 6%
+# visual transmissivity: 6.55%
+void glass glass_06
+0
+0
+3 .0655 .0655 .0655
+
+# glass_07
+# visual transmittance: 7%
+# visual transmissivity: 7.64%
+void glass glass_07
+0
+0
+3 .0764 .0764 .0764
+
+# glass_08
+# visual transmittance: 8%
+# visual transmissivity: 8.73%
+void glass glass_08
+0
+0
+3 .0873 .0873 .0873
+
+# glass_09
+# visual transmittance: 9%
+# visual transmissivity: 9.82%
+void glass glass_09
+0
+0
+3 .0982 .0982 .0982
+
+# glass_10
+# visual transmittance: 10%
+# visual transmissivity: 10.91%
+void glass glass_10
+0
+0
+3 .1091 .1091 .1091
+
+# glass_11
+# visual transmittance: 11%
+# visual transmissivity: 12%
+void glass glass_11
+0
+0
+3 .12 .12 .12
+
+# glass_12
+# visual transmittance: 12%
+# visual transmissivity: 13.09%
+void glass glass_12
+0
+0
+3 .1309 .1309 .01309
+
+# glass_13
+# visual transmittance: 13%
+# visual transmissivity: 14.18%
+void glass glass_13
+0
+0
+3 .1418 .1418 .1418
+
+# glass_14
+# visual transmittance: 14%
+# visual transmissivity: 15.27%
+void glass glass_14
+0
+0
+3 .1527 .1527 .1527
+
+# glass_15
+# visual transmittance: 15%
+# visual transmissivity: 16.3%
+void glass glass_15
+0
+0
+3 .163 .163 .163
+
+# glass_16
+# visual transmittance: 16%
+# visual transmissivity:17.45%
+void glass glass_16
+0
+0
+3 .1745 .1745 .1745
+
+# glass_17
+# visual transmittance: 17%
+# visual transmissivity: 18.54%
+void glass glass_17
+0
+0
+3 .1854 .1854 .1854
+
+# glass_18
+# visual transmittance: 18%
+# visual transmissivity: 19.64%
+void glass glass_18
+0
+0
+3 .1964 .1964 .1964
+
+# glass_19
+# visual transmittance: 19%
+# visual transmissivity:
+void glass glass_19
+0
+0
+3 .2073 .2073 .2073
+
+# glass_20
+# visual transmittance: 20%
+# visual transmissivity:
+void glass glass_20
+0
+0
+3 .2182 .2182 .2182
+
+# glass_21
+# visual transmittance: 21%
+# visual transmissivity:
+void glass glass_21
+0
+0
+3 .2291 .2291 .2291
+
+# glass_22
+# visual transmittance: 22%
+# visual transmissivity:
+void glass glass_22
+0
+0
+3 .24 .24 .24
+
+# glass_23
+# visual transmittance: 23%
+# visual transmissivity:
+void glass glass_23
+0
+0
+3 .2509 .2509 .2509
+
+# glass_24
+# visual transmittance: 24%
+# visual transmissivity:
+void glass glass_24
+0
+0
+3 .2618 .2618 .2618
+
+# glass_25
+# visual transmittance: 25%
+# visual transmissivity:
+void glass glass_25
+0
+0
+3 .2727 .2727 .2727
+
+# glass_26
+# visual transmittance: 26%
+# visual transmissivity:
+void glass glass_26
+0
+0
+3 .2836 .2836 .2836
+
+# glass_27
+# visual transmittance: 27%
+# visual transmissivity:
+void glass glass_27
+0
+0
+3 .2945 .2945 .2945
+
+# glass_28
+# visual transmittance: 28%
+# visual transmissivity:
+void glass glass_28
+0
+0
+3 .3045 .3045 .3045
+
+# glass_29
+# visual transmittance: 29%
+# visual transmissivity:
+void glass glass_29
+0
+0
+3 .3163 .3163 .3163
+
+# glass_30
+# visual transmittance: 30%
+# visual transmissivity:
+void glass glass_30
+0
+0
+3 .3272 .3272 .3272
+
+# glass_31
+# visual transmittance: 31%
+# visual transmissivity:
+void glass glass_31
+0
+0
+3 .3381 .3381 .3381
+
+# glass_32
+# visual transmittance: 32%
+# visual transmissivity:
+void glass glass_32
+0
+0
+3 .3499 .349 .349
+
+# glass_33
+# visual transmittance: 33%
+# visual transmissivity:
+void glass glass_33
+0
+0
+3 .3599 .3599 .3599
+
+# glass_34
+# visual transmittance: 34%
+# visual transmissivity:
+void glass glass_34
+0
+0
+3 .3708 .3708 .3708
+
+# glass_35
+# visual transmittance: 35%
+# visual transmissivity:
+void glass glass_35
+0
+0
+3 .3817 .3817 .3817
+
+# glass_36
+# visual transmittance: 36%
+# visual transmissivity:
+void glass glass_36
+0
+0
+3 .396 .396 .396
+
+# glass_37
+# visual transmittance: 37%
+# visual transmissivity:
+void glass glass_37
+0
+0
+3 .4035 .4035 .4035
+
+# glass_38
+# visual transmittance: 28%
+# visual transmissivity:
+void glass glass_38
+0
+0
+3 .4144 .4144 .4144
+
+# glass_39
+# visual transmittance: 39%
+# visual transmissivity:
+void glass glass_39
+0
+0
+3 .4253 .4253 .4253
+
+# glass_40
+# visual transmittance: 40%
+# visual transmissivity:
+void glass glass_40
+0
+0
+3 .4362 .4362 .4362
+
+# glass_41
+# visual transmittance: 41%
+# visual transmissivity:
+void glass glass_41
+0
+0
+3 .4471 .4471 .4471
+
+# glass_42
+# visual transmittance: 42%
+# visual transmissivity:
+void glass glass_42
+0
+0
+3 .458 .458 .458
+
+# glass_43
+# visual transmittance: 43%
+# visual transmissivity:
+void glass glass_43
+0
+0
+3 .4689 .4689 .4689
+
+# glass_44
+# visual transmittance: 44%
+# visual transmissivity:
+void glass glass_44
+0
+0
+3 .4798 .4798 .4798
+
+# glass_45
+# visual transmittance: 45%
+# visual transmissivity:
+void glass glass_45
+0
+0
+3 .4907 .4907 .4907
+
+# glass_46
+# visual transmittance: 46%
+# visual transmissivity:
+void glass glass_46
+0
+0
+3 .5016 .5016 .5016
+
+# glass_47
+# visual transmittance: 47%
+# visual transmissivity:
+void glass glass_47
+0
+0
+3 .5125 .5125 .5125
+
+# glass_48
+# visual transmittance: 48%
+# visual transmissivity:
+void glass glass_48
+0
+0
+3 .5234 .5234 .5234
+
+# glass_49
+# visual transmittance: 49%
+# visual transmissivity:
+void glass glass_49
+0
+0
+3 .5343 .5343 .5343
+
+# glass_50
+# visual transmittance: 50%
+# visual transmissivity:
+void glass glass_50
+0
+0
+3 .5452 .5452 .5452
+
+# glass_51
+# visual transmittance: 51%
+# visual transmissivity:
+void glass glass_51
+0
+0
+3 .5561 .5561 .5561
+
+# glass_52
+# visual transmittance: 52%
+# visual transmissivity:
+void glass glass_52
+0
+0
+3 .5669 .5669 .5669
+
+# glass_53
+# visual transmittance: 53%
+# visual transmissivity:
+void glass glass_53
+0
+0
+3 .5778 .5778 .5778
+
+# glass_54
+# visual transmittance: 54%
+# visual transmissivity:
+void glass glass_54
+0
+0
+3 .5887 .5887 .5887
+
+# glass_55
+# visual transmittance: 55%
+# visual transmissivity:
+void glass glass_55
+0
+0
+3 .5996 .5996 .5996
+
+# glass_56
+# visual transmittance: 56%
+# visual transmissivity:
+void glass glass_56
+0
+0
+3 .6105 .6105 .6105
+
+# glass_57
+# visual transmittance: 57%
+# visual transmissivity:
+void glass glass_57
+0
+0
+3 .6214 .6214 .6214
+
+# glass_58
+# visual transmittance: 58%
+# visual transmissivity:
+void glass glass_58
+0
+0
+3 .6323 .6323 .6323
+
+# glass_59
+# visual transmittance: 59%
+# visual transmissivity:
+void glass glass_59
+0
+0
+3 .6432 .6432 .6432
+
+# glass_60
+# visual transmittance: 60%
+# visual transmissivity:
+void glass glass_60
+0
+0
+3 .654 .654 .654
+
+# glass_61
+# visual transmittance: 61%
+# visual transmissivity:
+void glass glass_61
+0
+0
+3 .6649 .6649 .6649
+
+# glass_62
+# visual transmittance: 62%
+# visual transmissivity:
+void glass glass_62
+0
+0
+3 .6758 .6758 .6758
+
+# glass_63
+# visual transmittance: 63%
+# visual transmissivity:
+void glass glass_63
+0
+0
+3 .6887 .6887 .6887
+
+# glass_64
+# visual transmittance: 64%
+# visual transmissivity:
+void glass glass_64
+0
+0
+3 .6976 .6976 .6976
+
+# glass_65
+# visual transmittance: 65%
+# visual transmissivity:
+void glass glass_65
+0
+0
+3 .7085 .7085 .7085
+
+# glass_66
+# visual transmittance: 66%
+# visual transmissivity:
+void glass glass_66
+0
+0
+3 .7193 .7193 .7193
+
+# glass_67
+# visual transmittance: 67%
+# visual transmissivity:
+void glass glass_67
+0
+0
+3 .7302 .7302 .7302
+
+# glass_68
+# visual transmittance: 68%
+# visual transmissivity:
+void glass glass_68
+0
+0
+3 .7411 .7411 .7411
+
+# glass_69
+# visual transmittance: 69%
+# visual transmissivity:
+void glass glass_69
+0
+0
+3 .752 .752 .752
+
+# glass_70
+# visual transmittance: 70%
+# visual transmissivity:
+void glass glass_70
+0
+0
+3 .7628 .7628 .7628
+
+# glass_71
+# visual transmittance: 71%
+# visual transmissivity:
+void glass glass_71
+0
+0
+3 .7737 .7737 .7737
+
+# glass_72
+# visual transmittance: 72%
+# visual transmissivity:
+void glass glass_72
+0
+0
+3 .7846 .7846 .7846
+
+# glass_73
+# visual transmittance: 73%
+# visual transmissivity:
+void glass glass_73
+0
+0
+3 .7955 .7955 .7955
+
+# glass_74
+# visual transmittance: 74%
+# visual transmissivity:
+void glass glass_74
+0
+0
+3 .8063 .8063 .8063
+
+# glass_75
+# visual transmittance: 75%
+# visual transmissivity:
+void glass glass_75
+0
+0
+3 .8172 .8172 .8172
+
+# glass_76
+# visual transmittance: 76%
+# visual transmissivity: 82.81%
+void glass glass_76
+0
+0
+3 .8281 .8281 .8281
+
+# glass_77
+# visual transmittance: 77%
+# visual transmissivity: 83.89%
+void glass glass_77
+0
+0
+3 .8389 .8389 .8389
+
+# glass_78
+# visual transmittance: 78%
+# visual transmissivity: 84.98%
+void glass glass_78
+0
+0
+3 .8498 .8498 .8498
+
+# glass_79
+# visual transmittance: 79%
+# visual transmissivity: 86.07%
+void glass glass_79
+0
+0
+3 .8607 .8607 .8607
+
+# glass_80
+# visual transmittance: 80%
+# visual transmissivity: 87.15%
+void glass glass_80
+0
+0
+3 .8715 .8715 .8715
+
+# glass_81
+# visual transmittance: 81%
+# visual transmissivity: 88.24%
+void glass glass_81
+0
+0
+3 .8824 .8824 .8824
+
+# glass_82
+# visual transmittance: 82%
+# visual transmissivity: 89.33%
+void glass glass_82
+0
+0
+3 .8933 .8933 .8933
+
+# glass_83
+# visual transmittance: 83%
+# visual transmissivity: 90.41%
+void glass glass_83
+0
+0
+3 .9041 .9041 .9041
+
+# glass_84
+# visual transmittance: 84%
+# visual transmissivity: 91.5%
+void glass glass_84
+0
+0
+3 .915 .915 .915
+
+# glass_85
+# visual transmittance: 85%
+# visual transmissivity: 92.58%
+void glass glass_85
+0
+0
+3 .9258 .9258 .9258
+
+# glass_86
+# visual transmittance: 86%
+# visual transmissivity: 93.67%
+void glass glass_86
+0
+0
+3 .9367 .9367 .9367
+
+# glass_87
+# visual transmittance: 87%
+# visual transmissivity: 94.76%
+void glass glass_87
+0
+0
+3 .9476 .9476 .9476
+
+# glass_88
+# visual transmittance: 88%
+# visual transmissivity: 95.84%
+void glass glass_88
+0
+0
+3 .9584 .9584 .9584
+
+# glass_89
+# visual transmittance: 89%
+# visual transmissivity: 96.93%
+void glass glass_89
+0
+0
+3 .9693 .9693 .9693
+
+# glass_90
+# visual transmittance: 90%
+# visual transmissivity: 98.01%
+void glass glass_90
+0
+0
+3 .9801 .9801 .9801
+
+# glass_91
+# visual transmittance: 91%
+# visual transmissivity: 99.1%
+void glass glass_91
+0
+0
+3 .991 .991 .991
+
+# glass_92
+# visual transmittance: 92%
+# visual transmissivity: 100%
+void glass glass_92
+0
+0
+3 1 1 1
+
+# glass_100
+# visual transmittance: 100%
+# visual transmissivity: 100%
+void glass glass_100
+0 
+0 
+3 1 1 1
+
+
+#0 0 7 0.673 0.673 0.673 0.1 0.1 0.222 0.1
+void trans trans_22
+0 0 7 0.742025377	0.742025377	0.742025377	0	0	0.22	0.5
+
+
+void trans trans_30                  
+0 0 7 0.673 0.673 0.673 0	0	0.305 0.5
+
+
+
+######### Plastic ##########################################
+# plastic syntax description : #############################
+#   void plastic name
+#   0 0 5 reflectance_red reflectance_green reflectance_blue specularity_fraction roughness
+
+void plastic plastic_00
+0 0 5  0.00 0.00 0.00  0.03 0.02
+
+void plastic plastic_01
+0 0 5  0.01 0.01 0.01  0.03 0.02
+
+void plastic plastic_02
+0 0 5  0.02 0.02 0.02  0.03 0.02
+
+void plastic plastic_03
+0 0 5  0.03 0.03 0.03  0.03 0.02
+
+void plastic plastic_04
+0 0 5  0.04 0.04 0.04  0.03 0.02
+
+void plastic plastic_05
+0 0 5  0.05 0.05 0.05  0.03 0.02
+
+void plastic plastic_06
+0 0 5  0.06 0.06 0.06  0.03 0.02
+
+void plastic plastic_07
+0 0 5  0.07 0.07 0.07  0.03 0.02
+
+void plastic plastic_08
+0 0 5  0.08 0.08 0.08  0.03 0.02
+
+void plastic plastic_09
+0 0 5  0.09 0.09 0.09  0.03 0.02
+
+void plastic plastic_10
+0 0 5  0.1 0.1 0.1  0.03 0.02
+
+void plastic plastic_11
+0 0 5  0.11 0.11 0.11  0.03 0.02
+
+void plastic plastic_12
+0 0 5  0.12 0.12 0.12  0.03 0.02
+
+void plastic plastic_13
+0 0 5  0.13 0.13 0.13  0.03 0.02
+
+void plastic plastic_14
+0 0 5  0.14 0.14 0.14  0.03 0.02
+
+void plastic plastic_15
+0 0 5  0.15 0.15 0.15  0.03 0.02
+
+void plastic plastic_16
+0 0 5  0.16 0.16 0.16  0.03 0.02
+
+void plastic plastic_17
+0 0 5  0.17 0.17 0.17  0.03 0.02
+
+void plastic plastic_18
+0 0 5  0.18 0.18 0.18  0.03 0.02
+
+void plastic plastic_19
+0 0 5  0.19 0.19 0.19  0.03 0.02
+
+void plastic plastic_20
+0 0 5  0.2 0.2 0.2  0.03 0.02
+
+void plastic plastic_21
+0 0 5  0.21 0.21 0.21  0.03 0.02
+
+void plastic plastic_22
+0 0 5  0.22 0.22 0.22  0.03 0.02
+
+void plastic plastic_23
+0 0 5  0.23 0.23 0.23  0.03 0.02
+
+void plastic plastic_24
+0 0 5  0.24 0.24 0.24  0.03 0.02
+
+void plastic plastic_25
+0 0 5  0.25 0.25 0.25  0.03 0.02
+
+void plastic plastic_26
+0 0 5  0.26 0.26 0.26  0.03 0.02
+
+void plastic plastic_27
+0 0 5  0.27 0.27 0.27  0.03 0.02
+
+void plastic plastic_28
+0 0 5  0.28 0.28 0.28  0.03 0.02
+
+void plastic plastic_29
+0 0 5  0.29 0.29 0.29  0.03 0.02
+
+void plastic plastic_30
+0 0 5  0.3 0.3 0.3  0.03 0.02
+
+void plastic plastic_31
+0 0 5  0.31 0.31 0.31  0.03 0.02
+
+void plastic plastic_32
+0 0 5  0.32 0.32 0.32  0.03 0.02
+
+void plastic plastic_33
+0 0 5  0.33 0.33 0.33  0.03 0.02
+
+void plastic plastic_34
+0 0 5  0.34 0.34 0.34  0.03 0.02
+
+void plastic plastic_35
+0 0 5  0.35 0.35 0.35  0.03 0.02
+
+void plastic plastic_36
+0 0 5  0.36 0.36 0.36  0.03 0.02
+
+void plastic plastic_37
+0 0 5  0.37 0.37 0.37  0.03 0.02
+
+void plastic plastic_38
+0 0 5  0.38 0.38 0.38  0.03 0.02
+
+void plastic plastic_39
+0 0 5  0.39 0.39 0.39  0.03 0.02
+
+void plastic plastic_40
+0 0 5  0.4 0.4 0.4  0.03 0.02
+
+void plastic plastic_41
+0 0 5  0.41 0.41 0.41  0.03 0.02
+
+void plastic plastic_42
+0 0 5  0.42 0.42 0.42  0.03 0.02
+
+void plastic plastic_43
+0 0 5  0.43 0.43 0.43  0.03 0.02
+
+void plastic plastic_44
+0 0 5  0.44 0.44 0.44  0.03 0.02
+
+void plastic plastic_45
+0 0 5  0.45 0.45 0.45  0.03 0.02
+
+void plastic plastic_46
+0 0 5  0.46 0.46 0.46  0.03 0.02
+
+void plastic plastic_47
+0 0 5  0.47 0.47 0.47  0.03 0.02
+
+void plastic plastic_48
+0 0 5  0.48 0.48 0.48  0.03 0.02
+
+void plastic plastic_49
+0 0 5  0.49 0.49 0.49  0.03 0.02
+
+void plastic plastic_50
+0 0 5  0.5 0.5 0.5  0.03 0.02
+
+void plastic plastic_51
+0 0 5  0.51 0.51 0.51  0.03 0.02
+
+void plastic plastic_52
+0 0 5  0.52 0.52 0.52  0.03 0.02
+
+void plastic plastic_53
+0 0 5  0.53 0.53 0.53  0.03 0.02
+
+void plastic plastic_54
+0 0 5  0.54 0.54 0.54  0.03 0.02
+
+void plastic plastic_55
+0 0 5  0.55 0.55 0.55  0.03 0.02
+
+void plastic plastic_56
+0 0 5  0.56 0.56 0.56  0.03 0.02
+
+void plastic plastic_57
+0 0 5  0.57 0.57 0.57  0.03 0.02
+
+void plastic plastic_58
+0 0 5  0.58 0.58 0.58  0.03 0.02
+
+void plastic plastic_59
+0 0 5  0.59 0.59 0.59  0.03 0.02
+
+void plastic plastic_60
+0 0 5  0.6 0.6 0.6  0.03 0.02
+
+void plastic plastic_61
+0 0 5  0.61 0.61 0.61  0.03 0.02
+
+void plastic plastic_62
+0 0 5  0.62 0.62 0.62  0.03 0.02
+
+void plastic plastic_63
+0 0 5  0.63 0.63 0.63  0.03 0.02
+
+void plastic plastic_64
+0 0 5  0.64 0.64 0.64  0.03 0.02
+
+void plastic plastic_65
+0 0 5  0.65 0.65 0.65  0.03 0.02
+
+void plastic plastic_66
+0 0 5  0.66 0.66 0.66  0.03 0.02
+
+void plastic plastic_67
+0 0 5  0.67 0.67 0.67  0.03 0.02
+
+void plastic plastic_68
+0 0 5  0.68 0.68 0.68  0.03 0.02
+
+void plastic plastic_69
+0 0 5  0.69 0.69 0.69  0.03 0.02
+
+void plastic plastic_70
+0 0 5  0.7 0.7 0.7  0.03 0.02
+
+void plastic plastic_71
+0 0 5  0.71 0.71 0.71  0.03 0.02
+
+void plastic plastic_72
+0 0 5  0.72 0.72 0.72  0.03 0.02
+
+void plastic plastic_73
+0 0 5  0.73 0.73 0.73  0.03 0.02
+
+void plastic plastic_74
+0 0 5  0.74 0.74 0.74  0.03 0.02
+
+void plastic plastic_75
+0 0 5  0.75 0.75 0.75  0.03 0.02
+
+void plastic plastic_76
+0 0 5  0.76 0.76 0.76  0.03 0.02
+
+void plastic plastic_77
+0 0 5  0.77 0.77 0.77  0.03 0.02
+
+void plastic plastic_78
+0 0 5  0.78 0.78 0.78  0.03 0.02
+
+void plastic plastic_79
+0 0 5  0.79 0.79 0.79  0.03 0.02
+
+void plastic plastic_80
+0 0 5  0.8 0.8 0.8  0.03 0.02
+
+void plastic plastic_81
+0 0 5  0.81 0.81 0.81  0.03 0.02
+
+void plastic plastic_82
+0 0 5  0.82 0.82 0.82  0.03 0.02
+
+void plastic plastic_83
+0 0 5  0.83 0.83 0.83  0.03 0.02
+
+void plastic plastic_84
+0 0 5  0.84 0.84 0.84  0.03 0.02
+
+void plastic plastic_85
+0 0 5  0.85 0.85 0.85  0.03 0.02
+
+void plastic plastic_86
+0 0 5  0.86 0.86 0.86  0.03 0.02
+
+void plastic plastic_87
+0 0 5  0.87 0.87 0.87  0.03 0.02
+
+void plastic plastic_88
+0 0 5  0.88 0.88 0.88  0.03 0.02
+
+void plastic plastic_89
+0 0 5  0.89 0.89 0.89  0.03 0.02
+
+void plastic plastic_90
+0 0 5  0.9 0.9 0.9  0.03 0.02
+
+void plastic plastic_91
+0 0 5  0.91 0.91 0.91  0.03 0.02
+
+void plastic plastic_92
+0 0 5  0.92 0.92 0.92  0.03 0.02
+
+void plastic plastic_93
+0 0 5  0.93 0.93 0.93  0.03 0.02
+
+void plastic plastic_94
+0 0 5  0.94 0.94 0.94  0.03 0.02
+
+void plastic plastic_95
+0 0 5  0.95 0.95 0.95  0.03 0.02
+
+void plastic plastic_96
+0 0 5  0.96 0.96 0.96  0.03 0.02
+
+void plastic plastic_97
+0 0 5  0.97 0.97 0.97  0.03 0.02
+
+void plastic plastic_98
+0 0 5  0.98 0.98 0.98  0.03 0.02
+
+void plastic plastic_99
+0 0 5  .99 .99 .99  0.03 0.02
+
+void plastic plastic_100
+0 0 5  1 1 1  0.03 0.02
+
+
+########### metal ########################################
+# metal syntax description : #############################
+#   void metal name
+#   0 0 5 reflectance_red reflectance_green reflectance_blue specularity_fraction roughness
+
+void metal alu
+0 0 5   .8 .8 .8  .9 0.05
+
+void metal metal_100
+0 0 5 .8 .8 .8 .9 0
+
+void metal miro_93
+0 0 5 .94 .94 .94 .92 0.05
+
+void metal miro_94
+0 0 5 0.95 0.95 0.95 0.92 0.05
+
+
+######### mirror #########################################
+# mirror syntax description : ############################
+#   void mirror name
+#   0 0 3 transmissivity_red transmissivity_green transmissivity_blue
+
+void mirror spiegel_90
+0 0 3 .9 .9 .9   
+void mirror spiegel_70
+0 0 3 .7 .7 .7
+
+
