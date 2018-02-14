@@ -39,7 +39,7 @@ def readFiles(ptsfile, illfile):
 
 modelpath = "p:\\Milan_Focchi_Russoli_180104\\"\
             "Thermal\\20180205_Kickoff\\Model\\"
-variantname = "V3_ACT_SV1_SV2_newSHD"
+variantname = "V3_ACT_SV1_SV2"
 airnodename = "OFF"
 
 # modelpath = "c:\\Users\\vhoang\\Desktop\\LizardILLContour\\Model\\"
@@ -48,8 +48,6 @@ airnodename = "OFF"
 
 illfile, ptsfile = getFiles(modelpath, variantname, airnodename)
 Xmatrix, Ymatrix, Zmatrix = readFiles(ptsfile, illfile)
-mindomain = min(min(Xmatrix), min(Ymatrix))
-maxdomain = max(max(Xmatrix), max(Ymatrix))
 
 trace = go.Contour(
         z=Zmatrix,
@@ -62,6 +60,7 @@ trace = go.Contour(
         colorscale="Hot",
         autocontour=False,
         contours=dict(
+                showlabels=True,
                 start=0,
                 end=100,
                 size=10,
@@ -70,18 +69,18 @@ trace = go.Contour(
 data = [trace]
 layout = go.Layout(
         xaxis=dict(
-                autorange=False,
+                autorange=True,
                 tickmode="auto",
                 tick0=0,
                 dtick=abs(Ymatrix[0]-Ymatrix[1]),
-                domain=[mindomain, maxdomain]
+                domain=[min(Xmatrix), max(Xmatrix)]
                 ),
         yaxis=dict(
-                autorange=False,
+                autorange=True,
                 tickmode="auto",
                 tick0=0,
                 dtick=abs(Ymatrix[0]-Ymatrix[1]),
-                domain=[mindomain, maxdomain]
+                domain=[min(Ymatrix), max(Ymatrix)]
                 )
                         )
 fig = go.Figure(data=data, layout=layout)
