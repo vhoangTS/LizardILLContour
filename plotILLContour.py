@@ -67,6 +67,7 @@ def plotting(plotmode, Xmatrix, Ymatrix, Zmatrix, vname):
             y0=Ymatrix[0],
             dy=abs(Ymatrix[0]-Ymatrix[1]),
             colorscale=color,
+            connectgaps=False,
             autocontour=False,
             colorbar=dict(
                     title=title,
@@ -122,12 +123,10 @@ def plotting(plotmode, Xmatrix, Ymatrix, Zmatrix, vname):
         )
 
 
-modelpath = "p:\\Milan_Focchi_Russoli_180104\\"\
-            "Thermal\\20180205_Kickoff\\Model\\"
-variantname = ["V3_ACT_SV1_SV2"]
-airnodename = "OFF"
+modelpath = "c:\\Users\\vhoang\\Desktop\\_TEMP\\DLtest\\Model\\"
+variantname = ["BASIS0"]
+airnodename = "Z1"
 plotmode = ["DF", "DA"]  # DF: Daylight Factor, DA: Daylight Autonomy
-
 for vname in variantname:
     for plotm in plotmode:
         illfile, ptsfile = getFiles(modelpath, vname, airnodename)
