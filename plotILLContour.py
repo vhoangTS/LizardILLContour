@@ -17,6 +17,7 @@ def getFiles(modelpath, variantname, airnodename):
 
 def readFiles(plotmode, ptsfile, illfile):
     Xmatrix, Ymatrix, Zmatrix = [], [], []
+    # get X, Y coordinate
     ptsf = open(ptsfile, "r")
     ptslines = ptsf.readlines()
     for line in ptslines:
@@ -27,6 +28,7 @@ def readFiles(plotmode, ptsfile, illfile):
         except TypeError:
             pass
     ptsf.close()
+    # read *ill file
     illf = open(illfile, "r")
     illlines = illf.readlines()
     DA300line = illlines[-4].split()
@@ -43,7 +45,7 @@ def readFiles(plotmode, ptsfile, illfile):
     return Xmatrix, Ymatrix, Zmatrix
 
 
-def plotting(plotmode, Xmatrix, Ymatrix, Zmatrix, vname):
+def plotting(plotmode, connectmode, Xmatrix, Ymatrix, Zmatrix, vname):
     if plotmode == "DF":
         title = "Daylight Factor"
         endscale = 6
@@ -67,7 +69,7 @@ def plotting(plotmode, Xmatrix, Ymatrix, Zmatrix, vname):
             y0=Ymatrix[0],
             dy=abs(Ymatrix[0]-Ymatrix[1]),
             colorscale=color,
-            connectgaps=False,
+            connectgaps=connectmode,
             autocontour=False,
             colorbar=dict(
                     title=title,
@@ -97,9 +99,9 @@ def plotting(plotmode, Xmatrix, Ymatrix, Zmatrix, vname):
                     zeroline=False,
                     showticklabels=False,
                     tickmode="auto",
-                    tick0=0,
-                    dtick=abs(Ymatrix[0]-Ymatrix[1]),
-                    domain=[min(Xmatrix), max(Xmatrix)]
+                    #tick0=0,
+                    #dtick=abs(Xmatrix[0]-Xmatrix[1]),
+                    #domain=[min(Xmatrix), max(Xmatrix)]
                     ),
             yaxis=dict(
                     autorange=True,
@@ -107,9 +109,9 @@ def plotting(plotmode, Xmatrix, Ymatrix, Zmatrix, vname):
                     zeroline=False,
                     showticklabels=False,
                     tickmode="auto",
-                    tick0=0,
-                    dtick=abs(Ymatrix[0]-Ymatrix[1]),
-                    domain=[min(Ymatrix), max(Ymatrix)]
+                    #tick0=0,
+                    #dtick=abs(Ymatrix[0]-Ymatrix[1]),
+                    #domain=[min(Ymatrix), max(Ymatrix)]
                     )
                         )
     fig = go.Figure(data=data, layout=layout)
@@ -126,9 +128,10 @@ def plotting(plotmode, Xmatrix, Ymatrix, Zmatrix, vname):
 modelpath = "c:\\Users\\vhoang\\Desktop\\_TEMP\\DLtest\\Model\\"
 variantname = ["BASIS0"]
 airnodename = "Z1"
-plotmode = ["DF", "DA"]  # DF: Daylight Factor, DA: Daylight Autonomy
+plotmode = ["DA"]  # DF: Daylight Factor, DA: Daylight Autonomy
+connectmode = False # still very confusing, True if the shape is rectangular, false if the shape is complicated??
 for vname in variantname:
     for plotm in plotmode:
         illfile, ptsfile = getFiles(modelpath, vname, airnodename)
         Xmatrix, Ymatrix, Zmatrix = readFiles(plotm, ptsfile, illfile)
-        plotting(plotm, Xmatrix, Ymatrix, Zmatrix, vname)
+        plotting(plotm, connectmode, Xmatrix, Ymatrix, Zmatrix, vname)
