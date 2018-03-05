@@ -28,11 +28,18 @@ def readFiles(plotmode, ptsfile, illfile):
     # get X, Y coordinate
     ptsf = open(ptsfile, "r")
     ptslines = ptsf.readlines()
+    ptsid = 0
+    ptsdict = {}
     for line in ptslines:
         ldict = line.split()
         try:
             Xmatrix.append(round(float(ldict[0]), 2))
             Ymatrix.append(round(float(ldict[1]), 2))
+            ptsdict[ptsid] = [
+                round(float(ldict[0]), 2),
+                round(float(ldict[1]), 2)
+                ]
+            ptsid += 1
         except TypeError:
             pass
     ptsf.close()
@@ -43,17 +50,47 @@ def readFiles(plotmode, ptsfile, illfile):
     DA300line.pop(0)
     DFline = illlines[-1].split()
     DFline.pop(0)
+    resDict = {}
+    resID = 0
     if plotmode == "DA":
         for item in DA300line:
             Zmatrix.append(round(float(item), 2))
+            resDict[resID] = round(float(item), 2)
+            resID += 1
     elif plotmode == "DF":
         for item in DFline:
             Zmatrix.append(round(float(item), 2))
+            resDict[resID] = round(float(item), 2)
+            resID += 1
     illf.close()
-    return Xmatrix, Ymatrix, Zmatrix
+    return Xmatrix, Ymatrix, Zmatrix, ptsdict, resDict
+
+
+def getUniqueMatrix(matrix):
+    """get unique values from a matrix"""
+    unique = []
+    for item in matrix:
+        if item not in unique:
+            unique.append(item)
+    return unique
+
+
+def get3Dmatrix(Xmatrix, Ymatrix, Zmatrix):
+    """generating 3d matrix for 3d surface plotting"""
+    Xunique, Yunique = getUniqueMatrix(Xmatrix), getUniqueMatrix(Ymatrix)
+    finalLst = []
+    for xvalue in Xunique:
+        dummy = [xvalue]
+        for yvalue in Yunique:
+            for key in ptsDict.keys():
+                if ptsDict[key] == [xvalue, yvalue]:
+                    dummy.append(resDict[key])
+        finalLst.append(dummy)
+    return finalLst
 
 
 def plotting(plotmode, connectmode, Xmatrix, Ymatrix, Zmatrix, vname):
+    """plot contour 2D"""
     if plotmode == "DF":
         title = "Daylight Factor"
         endscale = 6
@@ -133,15 +170,88 @@ def plotting(plotmode, connectmode, Xmatrix, Ymatrix, Zmatrix, vname):
         )
 
 
-modelpath = "c:\\Users\\vhoang\\Desktop\\test\\Model\\"
+def plotting3D(plotmode, finalLst, vname):
+    """plot surface 3D"""
+    if plotmode == "DF":
+        title = "Daylight Factor"
+        endscale = 6
+        stepscale = 1
+        color = "Jet"
+    elif plotmode == "DA":
+        title = "Daylight Autonomy"
+        endscale = 100
+        stepscale = 10
+        color = "Jet"
+    imgsiz = 1600
+    # xdis = abs(max(Xmatrix) - min(Xmatrix))
+    # ydis = abs(max(Ymatrix) - min(Ymatrix))
+    # ratio = ydis / xdis
+    trace = [
+        go.Surface(
+            z=finalLst,
+            colorscale=color,
+            hoverinfo="z",
+            cmin=0,
+            cmax=endscale,
+            colorbar=dict(
+                title=title,
+                titleside='right',
+                titlefont=dict(size=min(imgsiz/100, 16)),
+                tick0=0,
+                dtick=stepscale,
+                ),
+            contours=dict(
+                z=dict(
+                    show=True,
+                    usecolormap=False,
+                    width=0.1,
+                )
+            ),
+        )
+    ]
+    layout = go.Layout(
+        title="%s - %s" % (title, vname),
+        xaxis=dict(
+            autorange=True,
+            showgrid=False,
+            zeroline=False,
+            showticklabels=False,
+            tickmode="auto"),
+        yaxis=dict(
+            autorange=True,
+            showgrid=False,
+            zeroline=False,
+            showticklabels=False,
+            tickmode="auto"))
+    fig = go.Figure(data=trace, layout=layout)
+    py.offline.plot(
+        fig,
+        filename="%s_%s.html" % (vname, plotmode),
+        # image='png',
+        # image_filename="%s_%s" % (vname, plotmode),
+        # image_width=imgsiz,
+        # image_height=ratio * imgsiz,
+    )
+
+
+modelpath = "c:\\Users\\vhoang\\Desktop\\_TEMP\\Model\\"
 variantname = ["BASIS0"]
 airnodename = "Z1"
-plotmode = ["DF", "DA"]  # DF: Daylight Factor, DA: Daylight Autonomy
+plotmode = ["DF"]  # DF: Daylight Factor, DA: Daylight Autonomy
 # still very confusing
 # True if the shape is rectangular, false if the shape is complicated??
 connectmode = False
+plot3D = True
 for vname in variantname:
     for plotm in plotmode:
         illfile, ptsfile = getFiles(modelpath, vname, airnodename)
-        Xmatrix, Ymatrix, Zmatrix = readFiles(plotm, ptsfile, illfile)
-        plotting(plotm, connectmode, Xmatrix, Ymatrix, Zmatrix, vname)
+        Xmatrix, Ymatrix, Zmatrix, ptsDict, resDict = readFiles(
+            plotm,
+            ptsfile,
+            illfile)
+        if plot3D is False:
+            plotting(plotm, connectmode, Xmatrix, Ymatrix, Zmatrix, vname)
+        else:
+            finalLst = get3Dmatrix(Xmatrix, Ymatrix, Zmatrix)
+            plotting3D(plotm, finalLst, vname)
+            pass
