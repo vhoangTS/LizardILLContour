@@ -14,7 +14,7 @@ def getFiles(modelpath, variantname, airnodename):
             break
         else:
             pass
-    if matchsig == None:
+    if matchsig is None:
         # print "*.ill file not found!"
         sys.exit("*.ill file not found!")
     else:
@@ -31,8 +31,8 @@ def readFiles(plotmode, ptsfile, illfile):
     for line in ptslines:
         ldict = line.split()
         try:
-            Xmatrix.append(round(float(ldict[0]),2))
-            Ymatrix.append(round(float(ldict[1]),2))
+            Xmatrix.append(round(float(ldict[0]), 2))
+            Ymatrix.append(round(float(ldict[1]), 2))
         except TypeError:
             pass
     ptsf.close()
@@ -45,10 +45,10 @@ def readFiles(plotmode, ptsfile, illfile):
     DFline.pop(0)
     if plotmode == "DA":
         for item in DA300line:
-            Zmatrix.append(round(float(item),2))
+            Zmatrix.append(round(float(item), 2))
     elif plotmode == "DF":
         for item in DFline:
-            Zmatrix.append(round(float(item),2))
+            Zmatrix.append(round(float(item), 2))
     illf.close()
     return Xmatrix, Ymatrix, Zmatrix
 
@@ -107,9 +107,9 @@ def plotting(plotmode, connectmode, Xmatrix, Ymatrix, Zmatrix, vname):
                     zeroline=False,
                     showticklabels=False,
                     tickmode="auto",
-                    #tick0=0,
-                    #dtick=abs(Xmatrix[0]-Xmatrix[1]),
-                    #domain=[min(Xmatrix), max(Xmatrix)]
+                    # tick0=0,
+                    # dtick=abs(Xmatrix[0]-Xmatrix[1]),
+                    # domain=[min(Xmatrix), max(Xmatrix)]
                     ),
             yaxis=dict(
                     autorange=True,
@@ -117,9 +117,9 @@ def plotting(plotmode, connectmode, Xmatrix, Ymatrix, Zmatrix, vname):
                     zeroline=False,
                     showticklabels=False,
                     tickmode="auto",
-                    #tick0=0,
-                    #dtick=abs(Ymatrix[0]-Ymatrix[1]),
-                    #domain=[min(Ymatrix), max(Ymatrix)]
+                    # tick0=0,
+                    # dtick=abs(Ymatrix[0]-Ymatrix[1]),
+                    # domain=[min(Ymatrix), max(Ymatrix)]
                     )
                         )
     fig = go.Figure(data=data, layout=layout)
@@ -137,7 +137,9 @@ modelpath = "c:\\Users\\vhoang\\Desktop\\test\\Model\\"
 variantname = ["BASIS0"]
 airnodename = "Z1"
 plotmode = ["DF", "DA"]  # DF: Daylight Factor, DA: Daylight Autonomy
-connectmode = False # still very confusing, True if the shape is rectangular, false if the shape is complicated??
+# still very confusing
+# True if the shape is rectangular, false if the shape is complicated??
+connectmode = False
 for vname in variantname:
     for plotm in plotmode:
         illfile, ptsfile = getFiles(modelpath, vname, airnodename)
