@@ -1,17 +1,25 @@
 import plotly as py
 import os
+import sys
 import plotly.graph_objs as go
 
 
 def getFiles(modelpath, variantname, airnodename):
     daylightdir = os.path.join(modelpath, variantname, "Daylight")
     allills = [fname for fname in os.listdir(daylightdir) if ".ill" in fname]
+    matchsig = None
     for item in allills:
         if airnodename in item:
             matchsig = item.split(".")[0]
             break
-    illfile = os.path.join(daylightdir, "%s.ill" % (matchsig))
-    ptsfile = os.path.join(daylightdir, "%s.pts" % (matchsig))
+        else:
+            pass
+    if matchsig == None:
+        # print "*.ill file not found!"
+        sys.exit("*.ill file not found!")
+    else:
+        illfile = os.path.join(daylightdir, "%s.ill" % (matchsig))
+        ptsfile = os.path.join(daylightdir, "%s.pts" % (matchsig))
     return illfile, ptsfile
 
 
@@ -23,8 +31,8 @@ def readFiles(plotmode, ptsfile, illfile):
     for line in ptslines:
         ldict = line.split()
         try:
-            Xmatrix.append(float(ldict[0]))
-            Ymatrix.append(float(ldict[1]))
+            Xmatrix.append(round(float(ldict[0]),2))
+            Ymatrix.append(round(float(ldict[1]),2))
         except TypeError:
             pass
     ptsf.close()
@@ -37,10 +45,10 @@ def readFiles(plotmode, ptsfile, illfile):
     DFline.pop(0)
     if plotmode == "DA":
         for item in DA300line:
-            Zmatrix.append(float(item))
+            Zmatrix.append(round(float(item),2))
     elif plotmode == "DF":
         for item in DFline:
-            Zmatrix.append(float(item))
+            Zmatrix.append(round(float(item),2))
     illf.close()
     return Xmatrix, Ymatrix, Zmatrix
 
@@ -74,12 +82,12 @@ def plotting(plotmode, connectmode, Xmatrix, Ymatrix, Zmatrix, vname):
             colorbar=dict(
                     title=title,
                     titleside='right',
-                    titlefont=dict(size=imgsiz/125),
+                    titlefont=dict(size=min(imgsiz/100, 16)),
                     ),
             contours=dict(
                     coloring='heatmap',
                     showlabels=True,
-                    labelfont=dict(size=imgsiz/125),
+                    labelfont=dict(size=min(imgsiz/100, 16)),
                     start=0,
                     end=endscale,
                     size=stepscale,
@@ -125,10 +133,10 @@ def plotting(plotmode, connectmode, Xmatrix, Ymatrix, Zmatrix, vname):
         )
 
 
-modelpath = "c:\\Users\\vhoang\\Desktop\\_TEMP\\DLtest\\Model\\"
+modelpath = "c:\\Users\\vhoang\\Desktop\\test\\Model\\"
 variantname = ["BASIS0"]
 airnodename = "Z1"
-plotmode = ["DA"]  # DF: Daylight Factor, DA: Daylight Autonomy
+plotmode = ["DF", "DA"]  # DF: Daylight Factor, DA: Daylight Autonomy
 connectmode = False # still very confusing, True if the shape is rectangular, false if the shape is complicated??
 for vname in variantname:
     for plotm in plotmode:
